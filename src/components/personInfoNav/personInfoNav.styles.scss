@@ -1,0 +1,40 @@
+.personInfoNavBox {
+    position: relative;
+    height: 60px;
+    max-width: 300px;
+    min-width: 300px;
+    margin-top: 15px;
+    border: 1px solid rgba($color: #696464, $alpha: 0.5);
+    border-radius: 50px;
+
+    & .iconProfile {
+        display: block;
+        position: absolute;
+        height: 54px;
+        width: 54px;
+        border: 1px solid rgba($color: #696464, $alpha: 0.5);
+        border-radius: 100%;
+        left: 1%;
+        top: 2px;
+    }
+
+    & .username {
+        display: block;
+        position: absolute;
+        font-family: "Anton SC";
+        font-style: normal;
+        color: white;
+        top: 4px;
+        left: 28%;
+    }
+
+    & .SignInState {
+        display: block;
+        position: absolute;
+        font-family: sans-serif;
+        font-style: normal;
+        color: white;
+        top: 50%;
+        right: 12%;
+    }
+}
