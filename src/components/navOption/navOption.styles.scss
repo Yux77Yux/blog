@@ -1,7 +1,7 @@
 .navOption {
-    max-width: 15vw;
-    min-width: 187px;
-    padding-top: 5px;
+    max-width: 30vw;
+    min-width: 250px;
+    padding-top: 7px;
     transform: skewX(-28deg);
 
     & .text {
@@ -11,15 +11,15 @@
 
     @keyframes myfirst {
         0% {
-            scale: 100% 120%;
+            scale: 110% 110%;
         }
 
         36% {
-            scale: 102% 125%;
+            scale: 120% 120%;
         }
 
         100% {
-            scale: 106% 130%;
+            scale: 130% 130%;
         }
     }
 
