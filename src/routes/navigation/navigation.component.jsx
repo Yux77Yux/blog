@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import PersonInfoNav from '../../components/personInfoNav/personInfoNav.component';
+import PersonProfileNav from '../../components/personProfileNav/personProfileNav.component';
 import NavOptions from '../../components/navOptions/navOptions.component';
 
 import './navigation.styles.scss';
@@ -33,10 +33,12 @@ const Navigation = () => {
     return (
         <>
             <div className="navbarBox">
-                <PersonInfoNav />
+                <PersonProfileNav />
                 <NavOptions navOptions={navOptions} />
             </div>
-            <Outlet />
+            <div className="bgground">
+                <Outlet />
+            </div>
         </>
     )
 }

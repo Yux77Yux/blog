@@ -1,0 +1,185 @@
+.personProfileNavBox {
+    margin-top: 10px;
+
+    & .personInfoNav {
+        position: relative;
+        height: 60px;
+        background: linear-gradient(to bottom, rgb(80, 41, 41) 3%, rgb(30, 30, 30) 40%, rgb(0, 0, 0) 100%);
+        max-width: 300px;
+        min-width: 300px;
+        margin-top: 15px;
+        border: 1px solid rgba($color: #696464, $alpha: 0.5);
+        border-radius: 50px;
+        z-index: 2;
+
+        & .iconPortrait {
+            display: block;
+            position: absolute;
+            height: 54px;
+            width: 54px;
+            cursor: pointer;
+            background: rgba(49, 48, 48, 0.8);
+            border: 1px solid rgba($color: #696464, $alpha: 0.5);
+            border-radius: 100%;
+            left: 1%;
+            top: 2px;
+            transition: height 0.3s linear, width 0.3s linear, top 0.3s linear, left 0.3s linear;
+            z-index: 2;
+        }
+
+        & .username {
+            display: block;
+            position: absolute;
+            font-family: "Anton SC";
+            font-style: normal;
+            color: white;
+            top: 4px;
+            left: 26%;
+            transition: left 0.3s linear, top 0.3s linear, font-size 0.3s linear;
+        }
+
+        & .lightLine {
+            display: block;
+            position: absolute;
+            height: 4px;
+            width: 48%;
+            background-color: rgb(163, 165, 29);
+            top: 75%;
+            left: 24%;
+            border: 1px solid rgb(163, 165, 29);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        & .SignInState {
+            display: block;
+            position: absolute;
+            font-family: sans-serif;
+            font-style: normal;
+            color: rgb(163, 165, 29);
+            top: 50%;
+            right: 12%;
+        }
+    }
+
+    & .dropPersonOptions {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        background: linear-gradient(rgb(30, 30, 30) 0%, rgb(30, 30, 30) 100%);
+        top: -50px;
+        left: 0;
+        z-index: 1;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+        & .dropOptions {
+            display: block;
+            position: relative;
+            width: 300px;
+            height: auto;
+            margin-top: 35px;
+            padding-top: 60px;
+            background-color: rgba(46, 46, 46, 0.3);
+            border-bottom: 15px solid rgb(92, 28, 28);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+
+            & .dropOption {
+                position: relative;
+                display: block;
+                width: 250px;
+                height: 56px;
+                left: 25px;
+                margin-bottom: 8px;
+                background-color: rgb(30, 30, 30);
+                border: 1px solid rgb(70, 0, 41);
+                border-radius: 15px;
+                border-bottom: 1px solid rgb(211, 51, 158);
+                text-align: center;
+                cursor: pointer;
+
+                & .text {
+                    display: block;
+                    padding-top: 10px;
+                    font-family: "Dela Gothic One";
+                    font-size: 22px;
+                }
+
+                &:hover {
+                    background-color: rgb(71, 71, 71);
+                }
+            }
+
+        }
+    }
+
+    &:hover .iconPortrait {
+        height: 100px;
+        width: 100px;
+        top: -22px;
+        left: 32%;
+    }
+
+    &:hover .username {
+        position: absolute;
+        top: 74px;
+        left: 8%;
+        font-size: 24px;
+    }
+
+    @keyframes dropPersonOptionsVisible {
+        from {
+            height: 0;
+            width: 0;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        to {
+            height: auto;
+            max-width: 300px;
+            min-width: 300px;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(30px)
+        }
+    }
+
+    @keyframes dropPersonOptionsInvisible {
+        from {
+            height: auto;
+            max-width: 300px;
+            min-width: 300px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        to {
+            height: 0;
+            width: 0;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    &:hover .dropPersonOptions {
+        animation-name: dropPersonOptionsVisible;
+        animation-duration: 300ms;
+        animation-timing-function: normal forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: running;
+    }
+
+    &:not(:hover) .dropPersonOptions {
+        animation-name: dropPersonOptionsInvisible;
+        animation-duration: 1ms;
+        animation-timing-function: normal forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: running;
+    }
+}
