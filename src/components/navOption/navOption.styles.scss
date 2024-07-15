@@ -1,36 +1,35 @@
 .navOption {
-    max-width: 30vw;
-    min-width: 250px;
-    padding-top: 7px;
-    transform: skewX(-28deg);
+    & .activePart {
+        width: 250px;
+        height: 100%;
+        padding-top: 7px;
+        transform: skewX(-28deg);
 
-    & .text {
-        display: inline-block;
-        transform: skewX(20deg);
+        @keyframes myfirst {
+            0% {
+                scale: 110%;
+            }
+
+            100% {
+                scale: 115% 145%;
+            }
+        }
     }
 
-    @keyframes myfirst {
-        0% {
-            scale: 110% 110%;
-        }
-
-        36% {
-            scale: 120% 120%;
-        }
-
-        100% {
-            scale: 130% 130%;
-        }
+    & .text {
+        display: block;
+        position: relative;
+        top: -46px;
     }
 
     &.navActive {
-        animation: myfirst 0.5s linear;
-        animation-direction: alternate;
-        animation-iteration-count: infinite;
-
-        border-radius: 15px 20px 15px 20px;
-
-        background-color: rgb(248, 203, 55);
+        & .activePart {
+            animation: myfirst 0.4s ease-in;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            border-radius: 15px 20px 15px 20px;
+            background-color: rgb(248, 203, 55);
+        }
 
         & .text {
             color: black;
@@ -38,20 +37,18 @@
     }
 
     &:first-child {
-        transform: skewX(0deg);
-        border-top-left-radius: 80px;
-        border-bottom-left-radius: 80px;
+        & .activePart {
+            transform: skewX(0deg);
+            border-top-left-radius: 80px;
+            border-bottom-left-radius: 80px;
+        }
 
-        &.navActive {
+        &.navActive .activePart {
             background:
                 linear-gradient(-62deg, rgba(255, 255, 255, 0) 15%, rgb(248, 203, 55) 15%, rgb(248, 203, 55) 100%);
         }
 
-        & .text {
-            transform: skewX(-10deg);
-        }
-
-        &.navActive::after {
+        &.navActive .activePart::after {
             content: '';
             display: block;
             position: absolute;
@@ -67,20 +64,18 @@
     }
 
     &:last-child {
-        transform: skewX(0);
-        border-top-right-radius: 80px;
-        border-bottom-right-radius: 80px;
+        & .activePart {
+            transform: skewX(0);
+            border-top-right-radius: 80px;
+            border-bottom-right-radius: 80px;
+        }
 
-        &.navActive {
+        &.navActive .activePart {
             background:
                 linear-gradient(-62deg, rgb(248, 203, 55) 85%, rgba(255, 255, 255, 0) 85%, rgba(255, 255, 255, 0) 100%);
         }
 
-        & .text {
-            transform: skewX(-10deg);
-        }
-
-        &.navActive::after {
+        &.navActive .activePart::after {
             content: '';
             display: block;
             position: absolute;

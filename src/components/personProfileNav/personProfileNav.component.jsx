@@ -1,10 +1,10 @@
 import { useState } from 'react';
-
-import { ReactComponent as MingChaoLogo } from '../../assets/mingchao3.svg';
-import './personProfileNav.styles.scss'
 import { Link } from 'react-router-dom';
 
+import './personProfileNav.styles.scss'
+
 const PersonProfileNav = () => {
+    const MingChaoLogo = require("../../assets/mingchao3.svg").ReactComponent;
     const [dropOptions, setDropOptions] = useState([
         {
             Id: 1,

@@ -10,6 +10,7 @@ const NavOption = props => {
         <NavLink to={navOption.title} key={navOption.Id} className={({ isActive }) =>
             isActive || (location.pathname === '/' && navOption.Id === 1) ? "navOption navActive" : "navOption"
         }>
+            <div className="activePart"></div>
             <span className="text">{navOption.titleName}</span>
         </NavLink>
     );

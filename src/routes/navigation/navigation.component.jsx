@@ -15,13 +15,13 @@ const Navigation = () => {
         },
         {
             Id: 2,
-            title: "/dateInfo",
+            title: "/dateArrange",
             titleName: "日程",
         },
         {
             Id: 3,
-            title: "/personInfo",
-            titleName: "个人信息",
+            title: "/favorites",
+            titleName: "收藏",
         },
         {
             Id: 4,

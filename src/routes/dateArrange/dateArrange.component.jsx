@@ -1,4 +1,4 @@
-const DataInfo = () => {
+const DateArrange = () => {
     return (
         <>
         <div>DataInfo</div>
@@ -6,4 +6,4 @@ const DataInfo = () => {
     );
 }
 
-export default DataInfo;
+export default DateArrange;

@@ -8,7 +8,7 @@
         margin-top: 25px;
         border: 1px solid rgba($color: #696464, $alpha: 0.5);
         border-radius: 50px;
-        z-index: 2;
+        z-index: 10;
 
         & .iconPortrait {
             display: block;
@@ -22,7 +22,7 @@
             left: 1%;
             top: 2px;
             transition: height 0.3s linear, width 0.3s linear, top 0.3s linear, left 0.3s linear;
-            z-index: 2;
+            z-index: inherit;
         }
 
         & .username {
@@ -46,7 +46,6 @@
             left: 24%;
             border: 1px solid rgb(163, 165, 29);
             border-radius: 2px;
-            z-index: 1;
         }
 
         & .SignInState {
@@ -71,7 +70,7 @@
         background: linear-gradient(rgb(30, 30, 30) 0%, rgb(30, 30, 30) 100%);
         top: -50px;
         left: 0;
-        z-index: 1;
+        z-index: 9;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
 

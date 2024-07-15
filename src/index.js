@@ -9,7 +9,8 @@ const Navigation = lazy(() => import('./routes/navigation/navigation.component')
 const Authentication = lazy(() => import('./routes/authentication/authentication.component'));
 const Home = lazy(() => import('./routes/home/home.component'));
 const PersonInfo = lazy(() => import('./routes/personInfo/personInfo.component'));
-const DateInfo = lazy(() => import('./routes/dateInfo/dateInfo.component'));
+const DateArrange = lazy(() => import('./routes/dateArrange/dateArrange.component'));
+const Favorites = lazy(() => import('./routes/favorites/favorites.component'));
 
 const router = createBrowserRouter([
   {
@@ -33,12 +34,16 @@ const router = createBrowserRouter([
             element: <Authentication />,
           },
           {
+            path: "favorites",
+            element: <Favorites />,
+          },
+          {
             path: "personInfo",
             element: <PersonInfo />,
           },
           {
-            path: "dateInfo",
-            element: <DateInfo />,
+            path: "dateArrange",
+            element: <DateArrange />,
           },
         ]
       }
