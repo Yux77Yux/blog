@@ -1,13 +1,22 @@
+@font-face {
+  font-family: 'SmileySans';
+  src: url('./assets/Font-family/SmileySans/SmileySans-Oblique.otf');
+}
+
 body {
   height: 100vh;
   width: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Dela Gothic One', 'Anton SC', 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'SmileySans', 'Dela Gothic One', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: url('./assets/bg.jpg');
+  background-size: cover;
+  
 }
 
 a {
@@ -22,7 +31,8 @@ a {
 img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 或者使用 contain */
+  object-fit: cover;
+  /* 或者使用 contain */
 }
 
 code {

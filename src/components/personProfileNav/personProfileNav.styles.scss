@@ -2,13 +2,13 @@
     & .personInfoNav {
         position: relative;
         height: 60px;
-        background: linear-gradient(to bottom, rgb(80, 41, 41) 3%, rgb(30, 30, 30) 40%, rgb(0, 0, 0) 100%);
+        background: linear-gradient(to bottom, rgba(80, 41, 41,0.8) 3%, rgba(30, 30, 30,0.8) 40%, rgba(0, 0, 0,0.8) 100%);
         max-width: 300px;
         min-width: 300px;
         margin-top: 25px;
         border: 1px solid rgba($color: #696464, $alpha: 0.5);
         border-radius: 50px;
-        z-index: 10;
+        z-index: 6;
 
         & .iconPortrait {
             display: block;
@@ -28,10 +28,9 @@
         & .username {
             display: block;
             position: absolute;
-            font-family: "Anton SC";
             font-style: normal;
             color: white;
-            top: 4px;
+            top: 10px;
             left: 26%;
             transition: left 0.3s linear, top 0.3s linear, font-size 0.3s linear;
         }
@@ -67,10 +66,10 @@
         height: 0;
         opacity: 0;
         visibility: hidden;
-        background: linear-gradient(rgb(30, 30, 30) 0%, rgb(30, 30, 30) 100%);
+        background: linear-gradient(rgba(216, 176, 176, 0) 0%,rgba(30, 30, 30,1) 10%, rgba(30, 30, 30,0.7) 100%);
         top: -50px;
         left: 0;
-        z-index: 9;
+        z-index: 5;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
 
@@ -102,8 +101,7 @@
 
                 & .text {
                     display: block;
-                    padding-top: 10px;
-                    font-family: "Dela Gothic One";
+                    margin-top: 15px;
                     font-size: 22px;
                 }
 

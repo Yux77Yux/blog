@@ -1,8 +1,9 @@
+import './dateArrange.styles.scss';
+
 const DateArrange = () => {
     return (
-        <>
-        <div>DataInfo</div>
-        </>
+        <div className="dateClass">
+        </div>
     );
 }
 

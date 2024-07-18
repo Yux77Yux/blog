@@ -1,0 +1,124 @@
+.detailBackground {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(43, 39, 39);
+    z-index: 10;
+    visibility: hidden;
+
+    & .backBox {
+        position: relative;
+        top: 2vh;
+
+        & .back {
+            display: block;
+            position: absolute;
+            height: 50px;
+            left: 3.2%;
+            width: 80px;
+            background-color: rgb(192, 188, 178);
+            background-image: url('../../assets//arrow/turn-left.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px 10px 10px 10px;
+            cursor: pointer;
+        }
+    }
+
+    & .detailBox {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        height: 90.5vh;
+        width: 94%;
+        top: 9vh;
+        left: 3%;
+        border: 4px solid rgb(255, 80, 89);
+        border-radius: 10px 50px;
+        color: white;
+        font-size: 50px;
+        align-items: center;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scrollbar-width: none;
+
+        & .imageBlock {
+            display: block;
+            position: relative;
+            height: 98%;
+            width: auto;
+            border-radius: 20px;
+            left: 2%;
+            object-fit: cover;
+            transition: all 0.6s linear;
+        }
+
+        & .contentBlocks {
+            display: block;
+            position: relative;
+            left: 3%;
+            width: 80%;
+            height: 96%;
+            border-radius: 30px 30px 30px 5px;
+            background-color: rgba($color: #837c7c, $alpha: 0.8);
+            background-image: url(../../assets/logo.png);
+            background-size: 800px;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            left: 3%;
+
+            & .move {
+                display: block;
+                position: absolute;
+                left: 6px;
+                top: 2%;
+                width: 40px;
+                height: 40px;
+                background: url('../../assets/arrow/left-arrow.png');
+                background-size: cover;
+                background-position: center;
+                cursor: pointer;
+            }
+
+            & .contentOptions {
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                width: 48px;
+                height: 100%;
+                justify-content: center;
+                background:
+                    linear-gradient(to left, rgba(0, 0, 0, 0.4)0%, rgba(0, 0, 0, 0)90%);
+
+                & .contentOption {
+                    position: relative;
+                    height: 100px;
+                    width: 100%;
+                    margin: 20px 0;
+
+                    & .text {
+                        position: relative;
+                        text-align: center;
+                        height: 100%;
+                        width: 60%;
+                        left: 20%;
+                        color: rgb(214, 141, 153);
+                        font-size: 40px;
+                        border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+                        border-radius: 5px;
+
+                        &:hover {
+                            color: black;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

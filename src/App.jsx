@@ -1,10 +1,15 @@
 import { Outlet } from 'react-router-dom';
 
+import VideoBackground from './components/videoBackground/videoBackground.component';
+
 import './App.scss';
 
 const App = () => {
   return (
-    <Outlet />
+    <>
+    <VideoBackground />
+      <Outlet />
+    </>
   );
 }
 

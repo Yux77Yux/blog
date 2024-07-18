@@ -36,7 +36,7 @@ const Navigation = () => {
                 <PersonProfileNav />
                 <NavOptions navOptions={navOptions} />
             </div>
-            <div className="bgground">
+            <div className="background">
                 <Outlet />
             </div>
         </>

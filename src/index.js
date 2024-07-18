@@ -1,8 +1,14 @@
 import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './index.scss';
+import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+
+import { store } from './store/store';
+
+import Spinner from './components/spinner/spinner.component';
+
+import './index.scss';
 
 const App = lazy(() => import('./App'));
 const Navigation = lazy(() => import('./routes/navigation/navigation.component'));
@@ -46,7 +52,7 @@ const router = createBrowserRouter([
             element: <DateArrange />,
           },
         ]
-      }
+      },
     ]
   }
 ])
@@ -54,8 +60,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Suspense fallback="">
-      <RouterProvider router={router} />
+    <Suspense fallback={<Spinner />}>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </Suspense>
   </React.StrictMode>
 );
