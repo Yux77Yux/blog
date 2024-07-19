@@ -1,10 +1,14 @@
-export const getArticlesMap = (articles) => {
+export const getArticlesMap = (articles,title="") => {
     if (!Array.isArray(articles)) {
         return {};
     }
 
-    return articles.reduce((grouped, article) => {
-        const { flow, Id } = article;
+    const articlesFilter = articles.filter(article => article.articleTitleContent.includes(title));
+
+    return articlesFilter.reduce((grouped, article) => {
+        const { Id } = article;
+
+        const flow = Id % 3;
 
         if (!grouped[flow]) {
             grouped[flow] = {};

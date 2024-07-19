@@ -1,17 +1,26 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './personProfileNav.styles.scss'
 
 const PersonProfileNav = () => {
     const MingChaoLogo = require("../../assets/mingchao3.svg").ReactComponent;
-    const [dropOptions, setDropOptions] = useState([
+    const dropOptions = [
         {
             Id: 1,
+            title: "主页",
+            toURL: "/",
+        },
+        {
+            Id: 2,
             title: "个人中心",
             toURL: "/",
         },
-    ])
+        {
+            Id: 3,
+            title: "退出",
+            toURL: "/",
+        },
+    ];
 
     return (
         <div className="personProfileNavBox">
@@ -32,7 +41,10 @@ const PersonProfileNav = () => {
                         )
                     }
                     <div className="dropOption">
-                        <span className="text">退出</span>
+                        <span className="text">登录</span>
+                    </div>
+                    <div className="dropOption">
+                        <span className="text">注册</span>
                     </div>
                 </div>
             </div>

@@ -1,14 +1,3 @@
-.pageImage {
-    display: block;
-
-    border-radius: inherit;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    z-index: 0;
-}
-
 .articleCardSmall {
     height: 345px;
 }
@@ -19,12 +8,6 @@
 
 .articleCardLarg {
     height: 560px;
-}
-
-.articleCardSmall:hover,
-.articleCardMedium:hover,
-.articleCardLarg:hover {
-    scale: 105%;
 }
 
 .articleCardSmall,
@@ -38,7 +21,7 @@
     border: 4px solid black;
     border-radius: 35px 35px 0 35px;
     flex-shrink: 0;
-    transition: scale 0.15s linear;
+    transition: all 0.15s linear;
     cursor: pointer;
 
     //头像部分的背景板
@@ -127,7 +110,8 @@
             text-overflow: ellipsis;
         }
 
-        & .articleTitle,& .articleTitleHighLight{
+        & .articleTitle,
+        & .articleTitleHighLight {
             bottom: 40px;
             left: 20px;
             font-size: 22px;
@@ -137,14 +121,15 @@
             scrollbar-width: none;
             text-overflow: ellipsis;
         }
+
         & .articleTitle {
             color: rgb(153, 153, 153);
-            border-bottom: 1px solid rgba(153, 153, 153,0.4);
+            border-bottom: 1px solid rgba(153, 153, 153, 0.4);
         }
 
         & .articleTitleHighLight {
             color: rgb(249, 249, 249);
-            border-bottom: 1px solid rgba(249, 249, 249,0.4);
+            border-bottom: 1px solid rgba(249, 249, 249, 0.4);
         }
 
         & .articleContent {
@@ -169,4 +154,20 @@
             background-color: rgb(55, 55, 55);
         }
     }
+}
+
+.articleCardSmall:hover,
+.articleCardMedium:hover,
+.articleCardLarg:hover {
+    height: 600px;
+}
+
+.pageImage {
+    display: block;
+    border-radius: inherit;
+    width: 100%;
+    height: calc(100% - 152px);
+    object-fit: cover;
+    object-position: top;
+    z-index: 0;
 }

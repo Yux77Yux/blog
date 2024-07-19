@@ -24,3 +24,15 @@ export const setArticlesSuccess = withMatcher(
 export const setArticlesFailure = withMatcher(
     (error) => createAction(ARTICLES_ACTION_TYPES.SET_ARTICLES_FAILURE, error)
 );
+
+export const setArticlesSearchedStart = withMatcher(
+    (articleTitle) => createAction(ARTICLES_ACTION_TYPES.SET_ARTICLES_SEARCHED_START, articleTitle)
+);
+
+export const setArticlesSearchedSuccess = withMatcher(
+    (articleTitle) => createAction(ARTICLES_ACTION_TYPES.SET_ARTICLES_SEARCHED_SUCCESS, articleTitle)
+);
+
+export const setArticlesSearchedFailure = withMatcher(
+    (error) => createAction(ARTICLES_ACTION_TYPES.SET_ARTICLES_SEARCHED_FAILURE, error)
+);

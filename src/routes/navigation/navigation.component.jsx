@@ -1,13 +1,11 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import PersonProfileNav from '../../components/personProfileNav/personProfileNav.component';
 import NavOptions from '../../components/navOptions/navOptions.component';
 
 import './navigation.styles.scss';
 
 const Navigation = () => {
-    const [navOptions, setNavOptions] = useState([
+    const navOptions = [
         {
             Id: 1,
             title: "/home",
@@ -23,17 +21,11 @@ const Navigation = () => {
             title: "/favorites",
             titleName: "收藏",
         },
-        {
-            Id: 4,
-            title: "/authentication",
-            titleName: "注册",
-        },
-    ]);
+    ];
 
     return (
         <>
             <div className="navbarBox">
-                <PersonProfileNav />
                 <NavOptions navOptions={navOptions} />
             </div>
             <div className="background">

@@ -7,6 +7,11 @@ export const getArticlesSelector = createSelector(
     (reducerState) => reducerState.articles
 )
 
+export const getArticlesSearchedSelector = createSelector(
+    [selectArticlesReducer],
+    (reducerState) => reducerState.articleTitle
+)
+
 export const articlesIsLoading = createSelector(
     [selectArticlesReducer],
     (reducerState) => reducerState.isLoading

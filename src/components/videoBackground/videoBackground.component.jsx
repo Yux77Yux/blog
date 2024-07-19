@@ -1,8 +1,10 @@
 import React from 'react';
-import videoSource from '../../assets/bg.mp4';
 import './videoBackground.styles.scss';
 
-const VideoBackground = () => {
+const VideoBackground = (props) => {
+    const {video} = props;
+    const videoSource = require(`../../assets/${video}`);
+
     return (
         <div className="video-background">
             <video autoPlay loop muted>

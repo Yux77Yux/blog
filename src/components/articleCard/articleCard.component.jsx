@@ -1,24 +1,21 @@
 import { useCallback } from 'react';
-import ArticleDetail from '../articleDetail/articleDetail.component';
+import { useNavigate } from 'react-router-dom';
 
 import './articleCard.styles.scss';
 
 const ArticleCard = props => {
+    const navigate = useNavigate();
     const { articleCard } = props;
-    const { authorProfile, pageImage } = articleCard;
+    const { authorProfile, pageImage,Id } = articleCard;
     const pageImagePath = require(`../../assets/${pageImage}`);
     const profileImage = require(`../../assets/${authorProfile}`);
 
-    const cardClick = useCallback((event) => {
-        const target = event.target.parentNode.previousSibling;
-        target.style.visibility = 'visible';
-        target.style.height = '100vh';
-        target.style.width = '100%';
-    }, [articleCard]);
+    const cardClick = useCallback(() => {
+        navigate(`/articles/${Id}`);
+    }, [Id,navigate]);
 
     return (
         <>
-            <ArticleDetail articleDetail={articleCard} />
             <div className={articleCard.cardClassName}>
                 <img src={pageImagePath} alt="XwX" className="pageImage" onClick={cardClick} />
 
@@ -30,14 +27,14 @@ const ArticleCard = props => {
                 </div>
 
                 <div className="articleBlock">
-                    <span className="articleAuthor">
+                    <span className="articleAuthor text">
                         {articleCard.author}
                     </span>
-                    <span className="authorUnderline"></span>
-                    <span className={articleCard.articleTitleClassName}>
+                    <span className="authorUnderline text"></span>
+                    <span className={`${articleCard.articleTitleClassName} text`}>
                         {articleCard.articleTitleContent}
                     </span>
-                    <span className="articleContent">
+                    <span className="articleContent text">
                         {articleCard.articleContent}
                     </span>
                 </div>

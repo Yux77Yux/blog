@@ -17,6 +17,7 @@ const Home = lazy(() => import('./routes/home/home.component'));
 const PersonInfo = lazy(() => import('./routes/personInfo/personInfo.component'));
 const DateArrange = lazy(() => import('./routes/dateArrange/dateArrange.component'));
 const Favorites = lazy(() => import('./routes/favorites/favorites.component'));
+const ArticleDetail = lazy(() => import('./components/articleDetail/articleDetail.component'));
 
 const router = createBrowserRouter([
   {
@@ -27,10 +28,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <Navigation />,
         children: [
-          {
-            index: true,
-            element: <Home />,
-          },
           {
             path: "home",
             element: <Home />,
@@ -53,8 +50,12 @@ const router = createBrowserRouter([
           },
         ]
       },
+      {
+        path: "articles/:Id",
+        element: <ArticleDetail />,
+      },
     ]
-  }
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

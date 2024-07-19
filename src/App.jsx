@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
+import PersonProfileNav from './components/personProfileNav/personProfileNav.component';
 import VideoBackground from './components/videoBackground/videoBackground.component';
 
 import './App.scss';
@@ -7,7 +8,8 @@ import './App.scss';
 const App = () => {
   return (
     <>
-    <VideoBackground />
+      <VideoBackground video="bg.mp4" />
+      <PersonProfileNav />
       <Outlet />
     </>
   );

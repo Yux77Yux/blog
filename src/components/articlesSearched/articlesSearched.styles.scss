@@ -1,0 +1,138 @@
+.searchBox {
+    display: block;
+    position: absolute;
+    height: 89.1vh;
+    width: 32vw;
+    left: 20px;
+    border-radius: 50px 0 0 50px;
+    background-color: rgba(228, 235, 227, 0.2);
+
+    & .inputBox {
+        display: block;
+        position: absolute;
+        top: 30px;
+        left: 22%;
+        height: 50px;
+        width: 343px;
+        background-color: rgba(255, 255, 255, 0.589);
+        border-radius: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+
+        & .magnifying-glass {
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 296px;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0);
+            background-image: url('../../assets/magnifying-glass.png');
+            background-size: 25px;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(227, 229, 231, 0.6);
+            }
+        }
+
+        & .crossMark {
+            display: none;
+            position: absolute;
+            top: 16px;
+            right: 70px;
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+            background-image: url('../../assets/icons8-cross-mark-50.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border-radius: 25px;
+
+            &:hover {
+                background-image: url('../../assets/icons8-cross-mark-51.png');
+            }
+        }
+
+        & input {
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 4px;
+            height: 40px;
+            width: 280px;
+            padding: 15px 10px;
+            outline: none;
+            background-color: rgb(255, 255, 255, 0);
+            border-radius: 8px;
+            color: black;
+            border: 0px;
+            font-size: 20px;
+
+            &:focus {
+                background-color: rgba(227, 229, 231, 0.6);
+            }
+
+            &:not(:placeholder-shown)+.crossMark {
+                display: block;
+            }
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    & .searchCategories {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 12vh;
+        left: 2vw;
+        height: 54px;
+        width: 28vw;
+        border-bottom: 1px solid rgba(227, 229, 231, 0.6);
+
+        & .searchCategory {
+            display: flex;
+            position: relative;
+            margin: 10px;
+            height: 46px;
+            width: 86px;
+            bottom: 8px;
+            cursor: pointer;
+
+            & .text {
+                display: block;
+                position: relative;
+                color: black;
+                text-align: center;
+                left: 20%;
+                height: 30px;
+                width: auto;
+                font-size: 30px;
+                pointer-events: none;
+            }
+
+            &:hover .text {
+                color: rgb(4, 79, 141);
+            }
+        }
+    }
+
+    & .underline {
+        display: block;
+        position: absolute;
+        top: 16.4vh;
+        left: 8.758vw;
+        height: 0.5vh;
+        width: 3vw;
+        border-radius: 10px;
+        background-color: rgb(4, 79, 141);
+        transition: all 320ms linear;
+    }
+}
