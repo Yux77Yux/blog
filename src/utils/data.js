@@ -1,4 +1,4 @@
-import articles from '../articles.json';
+import articles from '../SmulateDatabase/articles.json';
 
 export const getArticles = () => articles
 
