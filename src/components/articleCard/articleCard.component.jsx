@@ -17,7 +17,7 @@ const ArticleCard = props => {
     return (
         <>
             <div className={articleCard.cardClassName}>
-                <img src={pageImagePath} alt="XwX" className="pageImage" onClick={cardClick} />
+                <img src={pageImagePath} alt="XwX" className="coverImage" onClick={cardClick} />
 
                 <div className="authorProfileBlocks">
                     <div className="authorProfileBlockMain"></div>

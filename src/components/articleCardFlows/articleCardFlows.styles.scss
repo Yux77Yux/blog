@@ -1,20 +1,22 @@
 .articleCardFlows {
     display: flex;
-    position: absolute;
-    right: 20px;
-    height: 89.1vh;
-    width: 64vw;
-    border-radius: 0 50px 50px 0;
     flex-direction: row;
-    justify-content: space-evenly;
-    background-color: rgba(228, 235, 227, 0.2);
+    position: absolute;
+    top: 0;
+    left: 1.6%;
+    height: 89.1vh;
+    width: auto;
+    transition: transform 860ms ease-in-out;
+    //transform: translateX(-61.5vw);
+    transform: translateX(-0vw);
 
     & .articleCardFlow {
         display: flex;
         position: relative;
-        width: 18.3vw;
+        margin: 0 1.5vw;
+        width: 17.5vw;
         flex-direction: column;
-        overflow: auto;
+        overflow-y: auto;
         scrollbar-width: none;
     }
 }

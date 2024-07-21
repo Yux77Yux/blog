@@ -5,6 +5,19 @@
     justify-content: space-evenly;
     width: 100vw;
     height: 89.1vh;
-    overflow: auto;
+    overflow: scroll;
     scrollbar-width: none;
+
+    & .flowsBox {
+        display: block;
+        position: absolute;
+        right: 20px;
+        height: 89.1vh;
+        width: 64vw;
+        border-radius: 0 50px 50px 0;
+        background-color: rgba(228, 235, 227, 0.2);
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+    }
 }
