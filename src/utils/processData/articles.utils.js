@@ -22,35 +22,35 @@ export const processData = (articles) => {
         URL.revokeObjectURL(url);
     };
 
-    downloadJSON(datas,'articles.json');
+    downloadJSON(datas, 'articles.json');
 }
 
-function _slices(datas,group,sliceNum) {
+export function _slices(datas, group) {
     if (datas.length === 0) return [];
     let i = 0;
-    group[sliceNum] = [];
-
+    let sliceNum = group.length;
+    group[sliceNum] = []
     while (i + sliceNum * 5 < datas.length && i < 5) {
         group[sliceNum][i] = datas[i + sliceNum * 5];
         i++;
     }
 
     if (i + sliceNum * 5 < datas.length) {
-        sliceNum++;
-        _slices(datas,group,sliceNum);
+        _slices(datas, group);
     }
 }
 
-export const getArticlesMap = (articles, title = "") => {
+export const getArticlesMapAsync = async (articles, title = "") => {
     if (!Array.isArray(articles)) {
+        console.log("getArticlesMapAsync/failure");
         return [];
     }
 
-    const articlesFilter = articles.filter(article => article.articleTitleContent.includes(title));
-    let sliceNum = 0;
+    const articlesFilter = articles.filter(article => article.title.includes(title));
+
     let group = [];
-
-    _slices(articlesFilter,group,sliceNum);
-
-    return group;
+    await _slices(articlesFilter, group);
+    let group2 = [];
+    group2.push(group);
+    return group2;
 }

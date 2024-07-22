@@ -1,8 +1,13 @@
 import { NavLink } from 'react-router-dom';
+import { NavOptionType } from '../../routes/navigation/navigation.component';
 
 import './navOption.styles.scss';
 
-const NavOption = props => {
+export interface NavOptionProps {
+    navOption: NavOptionType,
+}
+
+const NavOption = (props: NavOptionProps) => {
     const { navOption } = props;
 
     return (

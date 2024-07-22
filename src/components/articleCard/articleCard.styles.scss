@@ -25,8 +25,8 @@
     cursor: pointer;
 
     //头像部分的背景板
-    & .authorProfileBlocks {
-        & .authorProfileBlockMain {
+    & .profileBlocks {
+        & .profileBlockMain {
             display: block;
             position: absolute;
             bottom: 109px;
@@ -38,7 +38,7 @@
             z-index: 1;
         }
 
-        & .authorProfileBlockLeft {
+        & .profileBlockLeft {
             display: block;
             position: absolute;
             bottom: 151px;
@@ -50,7 +50,7 @@
             z-index: 1;
         }
 
-        & .authorProfileBlockRight {
+        & .profileBlockRight {
             display: block;
             position: absolute;
             bottom: 151px;
@@ -63,7 +63,7 @@
         }
 
         //头像位置
-        & .authorProfile {
+        & .profile {
             display: block;
             position: absolute;
             bottom: 114px;
@@ -91,7 +91,7 @@
 
         & .articleAuthor,
         & .articleTitle,
-        & .articleContent,
+        & .summrary,
         & .articleTitleHighLight {
             display: block;
             position: absolute;
@@ -132,7 +132,7 @@
             border-bottom: 1px solid rgba(249, 249, 249, 0.4);
         }
 
-        & .articleContent {
+        & .summrary {
             color: rgb(179, 179, 179);
             bottom: 10px;
             left: 20px;

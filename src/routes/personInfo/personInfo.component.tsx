@@ -1,3 +1,5 @@
+import './personInfo.styles.scss';
+
 const PersonInfo = () => {
     return (
         <>

@@ -1,8 +1,8 @@
-import { withProcess } from './articlesSearched.process';
+import { withProcess, Handlers } from './articlesSearched.process';
 import './articlesSearched.styles.scss';
 
-const ArticlesSearched = (props) => {
-    const { clearSearchedHandler, searchHandler, moveHandler,enterHandler } = props;
+const ArticlesSearched = (props: Handlers) => {
+    const { clearSearchedHandler, searchHandler, moveHandler, enterHandler } = props;
 
     return <div className="searchBox">
         <div className="inputBox">

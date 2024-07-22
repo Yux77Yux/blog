@@ -4,8 +4,14 @@ import NavOptions from '../../components/navOptions/navOptions.component';
 
 import './navigation.styles.scss';
 
+export interface NavOptionType {
+    Id: number,
+    title: string,
+    titleName: string,
+}
+
 const Navigation = () => {
-    const navOptions = [
+    const navOptions:NavOptionType[] = [
         {
             Id: 1,
             title: "/home",

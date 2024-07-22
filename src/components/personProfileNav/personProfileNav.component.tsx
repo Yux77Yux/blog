@@ -35,7 +35,7 @@ const PersonProfileNav = () => {
                 <div className="dropOptions">
                     {
                         dropOptions.map(option =>
-                            <Link className="dropOption" key={option.Id}>
+                            <Link to="" className="dropOption" key={option.Id}>
                                 <span className="text">{option.title}</span>
                             </Link>
                         )

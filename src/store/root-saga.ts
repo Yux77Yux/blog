@@ -1,12 +1,12 @@
 import {
     call,
     all
-} from 'redux-saga/effects';
+} from 'typed-redux-saga/macro';
 
 import { articlesSaga } from './articles/articles.saga';
 
 export function* rootSaga(){
-    yield all([
+    yield* all([
         call(articlesSaga),
     ])
 }

@@ -1,8 +1,11 @@
-import React from 'react';
 import './videoBackground.styles.scss';
 
-const VideoBackground = (props) => {
-    const {video} = props;
+interface VideoBackgroundProps {
+    video: string,
+}
+
+const VideoBackground = (props: VideoBackgroundProps) => {
+    const { video } = props;
     const videoSource = require(`../../assets/${video}`);
 
     return (

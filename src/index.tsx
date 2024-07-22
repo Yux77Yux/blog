@@ -51,22 +51,22 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: "articles/:Id",
+        path: "articles/:uuid",
         element: <ArticleDetail />,
       },
     ]
   },
 ])
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
-    <Suspense fallback={<Spinner />}>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    </Suspense>
-  </React.StrictMode>
+  <Suspense fallback={< Spinner />}>
+<Provider store={ store } >
+<RouterProvider router={ router } />
+</Provider>
+</Suspense>
+</React.StrictMode>
 );
 
 reportWebVitals();

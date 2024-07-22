@@ -4,25 +4,31 @@ import ArticleCard from '../articleCard/articleCard.component';
 
 import { _runAsync } from '../../utils/processData/timeSharedRender.utils';
 
+import { ArticlesPage, ArticleFlow } from '../../store/articles/articles.types';
+
 import './articleCardFlows.styles.scss';
 
-const ArticleCardFlows = (props) => {
+export interface ArticleCardFlowsProps {
+    articleCardFlows: ArticlesPage | null,
+}
+
+const ArticleCardFlows = (props: ArticleCardFlowsProps) => {
     const { articleCardFlows } = props;
     const [renderedCards, setRenderedCards] = useState([]);
     const currentIndexRef = useRef(0);
 
-    const renderHandler = useCallback((currentItem, newIndex) => {
+    const renderHandler = useCallback((currentFlow: ArticleFlow, newIndex: number) => {
         return <div className="articleCardFlow" key={newIndex}>
             {
-                currentItem.map((item) =>
-                    <ArticleCard articleCard={item} key={item.Id} />
+                currentFlow.map((item) =>
+                    <ArticleCard articleCard={item} key={item.uuid} />
                 )
             }
         </div>;
     }, []);
 
     useEffect(() => {
-        if (Object.entries(articleCardFlows).length === 0) {
+        if (!articleCardFlows) {
             return;
         }
 
@@ -32,7 +38,7 @@ const ArticleCardFlows = (props) => {
         _runAsync(articleCardFlows, currentIndexRef, setRenderedCards, renderHandler);
     }, [articleCardFlows, renderHandler]);
 
-    if (Object.entries(articleCardFlows).length === 0) {
+    if (!articleCardFlows) {
         return (
             <div className="articleCardFlows">
                 <div style={{

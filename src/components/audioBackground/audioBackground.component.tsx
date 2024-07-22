@@ -1,7 +1,11 @@
 import React from 'react';
-import './videoBackground.styles.scss';
+import './audioBackground.styles.scss';
 
-const VideoBackground = (props) => {
+interface AudioBackgroundProps{
+    audio:string,
+}
+
+const AudioBackground = (props:AudioBackgroundProps) => {
     const {audio} = props;
     const audioSource = require(`../../assets/${audio}`);
 
@@ -14,4 +18,4 @@ const VideoBackground = (props) => {
     );
 }
 
-export default VideoBackground;
+export default AudioBackground;

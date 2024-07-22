@@ -1,9 +1,9 @@
-
+import './authentication.styles.scss';
 
 const Authertication = () => {
     return (
         <>
-        <div>AUTHERTICATION</div>
+            <div>AUTHERTICATION</div>
         </>
     );
 }

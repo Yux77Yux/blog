@@ -1,13 +1,12 @@
-import { withProcess } from './home.process';
+import { withProcess, HomeProps } from './home.process';
 import ArticlesSearched from '../../components/articlesSearched/articlesSearched.component';
 import ArticleCardFlows from '../../components/articleCardFlows/articleCardFlows.component';
 import Spinner from '../../components/spinner/spinner.component';
 
 import './home.styles.scss';
 
-const Home = (props) => {
+const Home = (props: HomeProps) => {
     const { load, articleCardFlows } = props;
-
     if (!articleCardFlows) {
         return <Spinner />;
     }
