@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 import NavOptions from '../../components/navOptions/navOptions.component';
 
@@ -11,10 +11,10 @@ export interface NavOptionType {
 }
 
 const Navigation = () => {
-    const navOptions:NavOptionType[] = [
+    const navOptions: NavOptionType[] = [
         {
             Id: 1,
-            title: "/home",
+            title: "/push",
             titleName: "推送",
         },
         {
@@ -28,6 +28,8 @@ const Navigation = () => {
             titleName: "收藏",
         },
     ];
+
+
 
     return (
         <>

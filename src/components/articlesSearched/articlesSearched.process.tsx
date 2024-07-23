@@ -1,7 +1,7 @@
 import { ComponentType, KeyboardEventHandler, MouseEventHandler, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setArticlesSearchedStart } from '../../store/articles/articles.action';
+import { fetchArticlesStart } from '../../store/articles/articles.action';
 import './articlesSearched.styles.scss';
 
 export interface Handlers {
@@ -11,7 +11,11 @@ export interface Handlers {
     enterHandler: KeyboardEventHandler<HTMLInputElement>,
 }
 
-export const withProcess = (Component: ComponentType<Handlers>) => () => {
+export interface SearchedProps extends Handlers{
+    setPageNum: React.Dispatch<React.SetStateAction<number>>,
+}
+
+export const withProcess = (Component: ComponentType<SearchedProps>) => (props:Omit<SearchedProps, keyof Handlers>) => {
     const dispatch = useDispatch();
 
     const moveHandler = useCallback((event: React.MouseEvent) => {
@@ -34,7 +38,7 @@ export const withProcess = (Component: ComponentType<Handlers>) => () => {
         if (!inputText) return;
         const title = inputText.value;
 
-        dispatch(setArticlesSearchedStart(title));
+        dispatch(fetchArticlesStart(title));
     }, [dispatch]);
 
     const clearSearchedHandler = useCallback((event: React.MouseEvent) => {
@@ -66,5 +70,5 @@ export const withProcess = (Component: ComponentType<Handlers>) => () => {
         enterHandler: enterHandler,
     }
 
-    return <Component {...handlers} />
+    return <Component {...props} {...handlers} />
 }

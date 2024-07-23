@@ -1,12 +1,11 @@
-.homeBox {
+.pushBox {
     display: flex;
     position: relative;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100vw;
     height: 89.1vh;
-    overflow: scroll;
-    scrollbar-width: none;
+    overflow: hidden;
 
     & .flowsBox {
         display: block;
@@ -16,8 +15,6 @@
         width: 64vw;
         border-radius: 0 50px 50px 0;
         background-color: rgba(228, 235, 227, 0.2);
-        overflow-x: auto;
-        overflow-y: hidden;
-        scrollbar-width: none;
+        overflow: hidden;
     }
 }

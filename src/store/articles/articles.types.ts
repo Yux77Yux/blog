@@ -30,8 +30,8 @@ export interface ArticleBrief {
     coverDimensions: string, //封面大小，用于类选择器
     coverImageUrl: string, //帖子封面
     summrary: string,//文章概述
-    createdAt: Date, //创建时间
-    updatedAt: Date,//更新时间
+    createdAt: string, //创建时间
+    updatedAt: string,//更新时间
     views: number | 0, // 浏览次数
     likes: number | 0, // 点赞次数
     author: string,//作者名，后端传过来

@@ -13,7 +13,7 @@ import './index.scss';
 const App = lazy(() => import('./App'));
 const Navigation = lazy(() => import('./routes/navigation/navigation.component'));
 const Authentication = lazy(() => import('./routes/authentication/authentication.component'));
-const Home = lazy(() => import('./routes/home/home.component'));
+const Push = lazy(() => import('./routes/push/push.component'));
 const PersonInfo = lazy(() => import('./routes/personInfo/personInfo.component'));
 const DateArrange = lazy(() => import('./routes/dateArrange/dateArrange.component'));
 const Favorites = lazy(() => import('./routes/favorites/favorites.component'));
@@ -29,8 +29,8 @@ const router = createBrowserRouter([
         element: <Navigation />,
         children: [
           {
-            path: "home",
-            element: <Home />,
+            path: "push",
+            element: <Push />,
           },
           {
             path: "authentication",

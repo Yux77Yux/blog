@@ -1,13 +1,13 @@
 .articleCardSmall {
-    height: 345px;
+    height: 37.5vh;
 }
 
 .articleCardMedium {
-    height: 465px;
+    height: 50.6vh;
 }
 
 .articleCardLarg {
-    height: 560px;
+    height: 61vh;
 }
 
 .articleCardSmall,
@@ -15,13 +15,13 @@
 .articleCardLarg {
     display: block;
     position: relative;
-    min-width: 320px;
+    width: 18vw;
     margin-top: 24px;
     background-color: rgba(0, 0, 0, 0.5);
     border: 4px solid black;
     border-radius: 35px 35px 0 35px;
     flex-shrink: 0;
-    transition: all 0.15s linear;
+    transition: height 0.15s linear;
     cursor: pointer;
 
     //头像部分的背景板
@@ -29,10 +29,10 @@
         & .profileBlockMain {
             display: block;
             position: absolute;
-            bottom: 109px;
-            left: 13px;
-            height: 70px;
-            width: 70px;
+            bottom: 11.9vh;
+            left: 1.4vh;
+            height: 7.6vh;
+            width: 7.6vh;
             background-color: rgb(34, 34, 34);
             border-radius: 100%;
             z-index: 1;
@@ -41,10 +41,10 @@
         & .profileBlockLeft {
             display: block;
             position: absolute;
-            bottom: 151px;
-            left: -22px;
-            height: 40px;
-            width: 40px;
+            bottom: 16.35vh;
+            left: -1.09vw;
+            height: 4.2vh;
+            width: 4.2vh;
             background: radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 75%, rgb(34, 34, 34) 75%, rgb(34, 34, 34) 100%);
             clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
             z-index: 1;
@@ -53,10 +53,10 @@
         & .profileBlockRight {
             display: block;
             position: absolute;
-            bottom: 151px;
-            left: 77px;
-            height: 40px;
-            width: 40px;
+            bottom: 16.4vh;
+            left: 8.5vh;
+            height: 4.2vh;
+            width: 4.2vh;
             background: radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 75%, rgb(34, 34, 34) 75%, rgb(34, 34, 34) 100%);
             clip-path: polygon(0% 50%, 50% 50%, 50% 100%, 0% 100%);
             z-index: 1;
@@ -66,10 +66,10 @@
         & .profile {
             display: block;
             position: absolute;
-            bottom: 114px;
-            left: 18px;
-            height: 61px;
-            width: 61px;
+            bottom: 12.4vh;
+            left: 1.9vh;
+            height: 6.6vh;
+            width: 6.6vh;
             background: rgb(14, 0, 0);
             object-fit: cover;
             border-radius: 100%;
@@ -81,8 +81,8 @@
     & .articleBlock {
         display: block;
         position: absolute;
-        height: 152px;
-        width: 100%;
+        height: 16.5vh;
+        width: 17.6vw;
         bottom: 0;
         border-bottom-left-radius: inherit;
         background-color: rgb(34, 34, 34);
@@ -100,10 +100,10 @@
 
         & .articleAuthor {
             color: rgb(102, 102, 102);
-            bottom: 118px;
-            left: 100px;
+            bottom: 12.8vh;
+            left: 5.4vw;
             font-size: 22px;
-            width: 290px;
+            width: 11vw;
             text-align: start;
             white-space: nowrap;
             overflow: hidden;
@@ -112,10 +112,10 @@
 
         & .articleTitle,
         & .articleTitleHighLight {
-            bottom: 40px;
-            left: 20px;
+            bottom: 4.5vh;
+            left: 1.1vw;
             font-size: 22px;
-            width: 280px;
+            width: 14vw;
             height: 60px;
             overflow: auto;
             scrollbar-width: none;
@@ -134,10 +134,10 @@
 
         & .summrary {
             color: rgb(179, 179, 179);
-            bottom: 10px;
-            left: 20px;
+            bottom: 1.15vh;
+            left: 1vw;
             font-size: 20px;
-            width: 290px;
+            width: 15vw;
             text-align: start;
             white-space: nowrap;
             overflow: hidden;
@@ -147,10 +147,10 @@
         & .authorUnderline {
             display: block;
             position: absolute;
-            bottom: 110px;
-            left: 92px;
-            width: 220px;
-            height: 4px;
+            bottom: 12vh;
+            left: 4.8vw;
+            width: 11.5vw;
+            height: 0.3vh;
             background-color: rgb(55, 55, 55);
         }
     }
@@ -159,14 +159,14 @@
 .articleCardSmall:hover,
 .articleCardMedium:hover,
 .articleCardLarg:hover {
-    height: 600px;
+    height: 65vh;
 }
 
 .coverImage {
     display: block;
     border-radius: inherit;
     width: 100%;
-    height: calc(100% - 152px);
+    height: calc(100% - 12.5vh);
     object-fit: cover;
     object-position: top;
     z-index: 0;

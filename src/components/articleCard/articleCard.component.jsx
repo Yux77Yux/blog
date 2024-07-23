@@ -11,10 +11,8 @@ const ArticleCard = (props) => {
     const profileImage = require(`../../assets/${profile}`);
     
     const cardClick = useCallback(() => {
-        navigate(`/articles/${uuid}`);
-        //const url = `${window.location.origin}/articles/${uuid}`;
-        // 打开新窗口
-        //window.open(url, '_blank');
+        const url = `${window.location.origin}/articles/${uuid}`;
+        window.open(url, '_blank');
     }, [uuid,navigate]);
 
     return (

@@ -1,11 +1,14 @@
-export const processData = (articles) => {
-    const datas = articles.reduce((items, item, idx) => {
+import { ArticleFlow, ArticlesPage } from "../../store/articles/articles.types";
+
+
+/*export const processDatas = (articles:any) => {
+    const datas = articles.reduce((items:any, item:any, idx:number) => {
         const updatedItem = { ...item, Id: idx + 1 };
         items.push(updatedItem);
         return items;
     }, []);
 
-    const downloadJSON = (data, filename) => {
+    const downloadJSON = (data:any, filename:string) => {
         // 创建 Blob 对象
         const blob = new Blob([JSON.stringify(data, null, 4)], { type: 'application/json' });
         // 创建一个指向 Blob 的 URL
@@ -23,9 +26,9 @@ export const processData = (articles) => {
     };
 
     downloadJSON(datas, 'articles.json');
-}
+}*/
 
-export function _slices(datas, group) {
+export function _slices(datas:ArticleFlow, group:ArticlesPage) {
     if (datas.length === 0) return [];
     let i = 0;
     let sliceNum = group.length;
@@ -40,7 +43,7 @@ export function _slices(datas, group) {
     }
 }
 
-export const getArticlesMapAsync = async (articles, title = "") => {
+export const getArticlesMapAsync = async (articles: ArticleFlow, title = ""): Promise<ArticlesPage> => {
     if (!Array.isArray(articles)) {
         console.log("getArticlesMapAsync/failure");
         return [];
@@ -48,9 +51,7 @@ export const getArticlesMapAsync = async (articles, title = "") => {
 
     const articlesFilter = articles.filter(article => article.title.includes(title));
 
-    let group = [];
+    let group:ArticlesPage = [];
     await _slices(articlesFilter, group);
-    let group2 = [];
-    group2.push(group);
-    return group2;
+    return group;
 }

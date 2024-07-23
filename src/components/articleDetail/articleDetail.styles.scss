@@ -9,23 +9,12 @@
     opacity: 0.975;
 
     & .backBox {
-        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        position: absolute;
         top: 2vh;
-
-        & .back {
-            display: block;
-            position: absolute;
-            height: 50px;
-            left: 3.2%;
-            width: 80px;
-            background-color: rgb(1, 255, 99);
-            background-image: url('../../assets//arrow/turn-left.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            border-radius: 10px 10px 10px 10px;
-            cursor: pointer;
-        }
+        left: 3%;
     }
 
     & .detailBox {

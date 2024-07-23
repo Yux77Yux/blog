@@ -1,0 +1,13 @@
+.back {
+    display: block;
+    position: relative;
+    height: 50px;
+    left: 3%;
+    margin: 0 15px;
+    width: 70px;
+    background-color: rgb(37, 153, 82);
+    object-fit: contain; 
+    object-position: center;
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
+}

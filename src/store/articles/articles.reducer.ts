@@ -11,7 +11,7 @@ import {
 import { Articles,Article } from './articles.types';
 
 export interface ArticlesState{
-    readonly articlesBrief: Articles,
+    readonly articles: Articles,
     readonly article: Article | null,
     readonly articleTitle: string,
     readonly isLoading: boolean,
@@ -19,7 +19,7 @@ export interface ArticlesState{
 }
 
 const ARTICLES_INITIAL_STATE:ArticlesState = {
-    articlesBrief: [],
+    articles: [],
     article: null,
     articleTitle: "",
     isLoading: false,
@@ -37,7 +37,7 @@ export const articlesReducer = (state = ARTICLES_INITIAL_STATE, action = {} as A
     if (fetchArticlesSuccess.match(action)) {
         return {
             ...state,
-            articlesBrief: action.payload,
+            articles: action.payload,
             isLoading: false,
         }
     }

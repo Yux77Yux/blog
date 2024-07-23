@@ -3,18 +3,18 @@
     flex-direction: row;
     position: absolute;
     top: 0;
-    left: 1.6%;
     height: 89.1vh;
     width: auto;
-    transition: transform 860ms ease-in-out;
-    //transform: translateX(-61.5vw);
-    transform: translateX(-0vw);
+    transition: left 860ms ease-in-out;
+    //left: -63vw; //单位
+    left: 0vw;
 
     & .articleCardFlow {
         display: flex;
         position: relative;
         margin: 0 1.5vw;
-        width: 17.5vw;
+        width: auto;
+        left: 0;
         flex-direction: column;
         overflow-y: auto;
         scrollbar-width: none;

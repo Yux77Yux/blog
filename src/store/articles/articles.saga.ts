@@ -1,6 +1,6 @@
-import { takeLatest, all, call, put } from 'typed-redux-saga/macro';
+import { takeLatest, all, call, put, select } from 'typed-redux-saga/macro';
 import { getArticlesAsync } from "../../utils/data";
-import { ARTICLES_ACTION_TYPES, Article, Articles } from "./articles.types";
+import { ARTICLES_ACTION_TYPES, Article, ArticleFlow, Articles, ArticlesPage } from "./articles.types";
 import {
     FetchArticlesStart,
     fetchArticlesSuccess,
@@ -9,20 +9,32 @@ import {
     fetchArticleSuccess,
     fetchArticleFailure,
     SetArticlesSearchedStart,
+    setArticlesSearchedStart,
     setArticlesSearchedSuccess,
     setArticlesSearchedFailure,
     SetArticleStart,
     setArticleSuccess,
     setArticleFailure,
 } from './articles.action';
+import { getArticlesSelector, getArticlesSearchedSelector } from './articles.selector';
 import { getArticlesMapAsync } from '../../utils/processData/articles.utils';
 
 
 export function* fetchArticlesAsync({ payload }: FetchArticlesStart) {
     try {
-        const articles = yield* call(getArticlesAsync);
-        const articlesArray = yield* call(getArticlesMapAsync, articles,payload);
-        yield* put(fetchArticlesSuccess(articlesArray));
+        const articlesData: ArticleFlow = yield* call(getArticlesAsync);
+        const articlesPage: ArticlesPage = yield* call(getArticlesMapAsync, articlesData, payload);
+
+        const title = yield* select(getArticlesSearchedSelector);
+        let articles: Articles = yield* select(getArticlesSelector);
+
+        if (payload === ""|| payload !== title) {
+            articles = [];
+            articles.push(articlesPage);
+        }
+
+        yield* put(fetchArticlesSuccess(articles));
+        yield* put(setArticlesSearchedStart(payload))
     } catch (error) {
         yield* put(fetchArticlesFailure(error as Error));
     }

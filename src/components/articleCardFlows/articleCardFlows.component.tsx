@@ -2,40 +2,37 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 
 import ArticleCard from '../articleCard/articleCard.component';
 
-import { _runAsync } from '../../utils/processData/timeSharedRender.utils';
+import { _run } from '../../utils/processData/timeSharedRender.utils';
 
 import { ArticlesPage, ArticleFlow } from '../../store/articles/articles.types';
 
 import './articleCardFlows.styles.scss';
 
 export interface ArticleCardFlowsProps {
-    articleCardFlows: ArticlesPage | null,
+    articleCardFlows: ArticlesPage,
+    setPageNum: React.Dispatch<React.SetStateAction<number>>,
 }
 
 const ArticleCardFlows = (props: ArticleCardFlowsProps) => {
-    const { articleCardFlows } = props;
-    const [renderedCards, setRenderedCards] = useState([]);
+    const { articleCardFlows,setPageNum } = props;
+    const [renderedCards, setRenderedCards] = useState<JSX.Element[]>([]);
     const currentIndexRef = useRef(0);
 
-    const renderHandler = useCallback((currentFlow: ArticleFlow, newIndex: number) => {
+    const renderHandler = useCallback((currentFlow: ArticleFlow, newIndex: number): JSX.Element => {
         return <div className="articleCardFlow" key={newIndex}>
-            {
-                currentFlow.map((item) =>
-                    <ArticleCard articleCard={item} key={item.uuid} />
-                )
-            }
-        </div>;
+            {currentFlow.map((item) => (
+                <ArticleCard articleCard={item} key={item.uuid} />
+            ))}
+        </div>
     }, []);
 
     useEffect(() => {
-        if (!articleCardFlows) {
-            return;
-        }
-
+        if (articleCardFlows.length <= 0) return;
+        
         currentIndexRef.current = 0;
         setRenderedCards([]);
 
-        _runAsync(articleCardFlows, currentIndexRef, setRenderedCards, renderHandler);
+        _run(articleCardFlows, currentIndexRef, setRenderedCards, renderHandler);
     }, [articleCardFlows, renderHandler]);
 
     if (!articleCardFlows) {

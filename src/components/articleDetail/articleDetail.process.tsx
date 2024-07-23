@@ -3,12 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
-import { getArticlesBriefSelector } from '../../store/articles/articles.selector';
+import { getArticlesSelector } from '../../store/articles/articles.selector';
 import { ArticleBrief } from '../../store/articles/articles.types';
+
+import {searchArticle} from '../../SmulateDatabase/searchDetail';
 
 export interface ArticlesDetailProps {
     articleDetail: ArticleBrief | null,
     backHandler: MouseEventHandler<HTMLDivElement>,
+    pageDefaultHandler: MouseEventHandler<HTMLDivElement>,
     mouseDownHandler: MouseEventHandler<HTMLDivElement>,
     loading:boolean,
 }
@@ -16,12 +19,16 @@ export interface ArticlesDetailProps {
 export const withProcessNav = (Component: ComponentType<ArticlesDetailProps>) => () => {
     const navigate = useNavigate();
     const { uuid } = useParams();
-    const articles = useSelector(getArticlesBriefSelector);
+    const articles = useSelector(getArticlesSelector);
     const [articleDetail, setArticleDetail] = useState<ArticleBrief | null>(null);
     const [loading, setLoading] = useState(true);
 
     const backHandler = useCallback((event: React.MouseEvent) => {
-        navigate(-1);
+        navigate("/push");
+    }, [navigate]);
+
+    const pageDefaultHandler = useCallback((event: React.MouseEvent) => {
+        navigate("/");
     }, [navigate]);
 
     const mouseDownHandler = useCallback((event: React.MouseEvent) => {
@@ -45,10 +52,10 @@ export const withProcessNav = (Component: ComponentType<ArticlesDetailProps>) =>
 
     useEffect(() => {
         if (!articles) {
-            navigate("/home");
+            navigate("/push");
             return;
         }
-        let id = parseInt(uuid as string);
+        /*let id = parseInt(uuid as string);
         let page = id / 300;
         let flow = (id % 300) / 5;
         let index = id % 5;
@@ -57,12 +64,12 @@ export const withProcessNav = (Component: ComponentType<ArticlesDetailProps>) =>
         flow = index === 4 ? (flow + 59) % 60 : flow;
         flow = Math.floor(flow);
         page = flow === 59 && index === 4 ? page - 1 : page;
-        page = Math.floor(page);
+        page = Math.floor(page);*/
 
-        const foundArticle = articles[page][flow][index] || null;
+        const foundArticle = searchArticle(uuid);
 
         if (!foundArticle) {
-            navigate("/home");
+            navigate("/push");
             return;
         } else {
             setArticleDetail(foundArticle);
@@ -73,6 +80,7 @@ export const withProcessNav = (Component: ComponentType<ArticlesDetailProps>) =>
     const otherProps = {
         articleDetail: articleDetail!,
         backHandler: backHandler,
+        pageDefaultHandler:pageDefaultHandler,
         mouseDownHandler: mouseDownHandler,
         loading:loading
     }
