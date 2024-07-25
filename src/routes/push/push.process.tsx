@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { ComponentType, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -5,34 +6,42 @@ import { ArticleCardFlowsProps } from '../../components/articleCardFlows/article
 
 import {
     getArticlesSelector,
+    articlesIsLoading,
+    getArticlesSearchedSelector
 } from '../../store/articles/articles.selector';
-import { ArticlesPage } from '../../store/articles/articles.types';
+import { Articles } from '../../store/articles/articles.types';
 
 
 export interface PushProps extends ArticleCardFlowsProps {
     load: boolean,
-    articleCardFlows: ArticlesPage,
+    articleCardFlows: Articles,
+    pageNum: number,
     setPageNum: React.Dispatch<React.SetStateAction<number>>,
+    articlesLength: number,
 }
 
 export function withProcess(Component: ComponentType<PushProps>) {
     return () => {
         const articles = useSelector(getArticlesSelector);
-        const [load, setLoad] = useState(true);
-        const [articleCardFlows, setArticleCardFlows] = useState<ArticlesPage>([]);
-        const [pageNum, setPageNum] = useState(0);
+        const isLoading = useSelector(articlesIsLoading);
+        const title = useSelector(getArticlesSearchedSelector);
+        const [prevTitle, setPrevTitle] = useState("");
+        const articlesLength = articles.length;
+        const [pageNum, setPageNum] = useState(1);
 
         useEffect(() => {
-            setArticleCardFlows(
-                () => articles[pageNum] || []
-            );
-            setLoad(false);
-        }, [articles, pageNum]);
+            if (title !== prevTitle) {
+                setPageNum(1);
+            }
+            setPrevTitle(() => title);
+        }, [title]);
 
         let other = {
-            load: load,
-            articleCardFlows: articleCardFlows,
+            load: isLoading,
+            articleCardFlows: articles,
+            pageNum: pageNum,
             setPageNum: setPageNum,
+            articlesLength: articlesLength,
         }
 
         return <Component {...other} />

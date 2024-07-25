@@ -8,9 +8,9 @@ import {
     setArticlesSearchedFailure,
 } from './articles.action';
 
-import { Articles,Article } from './articles.types';
+import { Articles, Article } from './articles.types';
 
-export interface ArticlesState{
+export interface ArticlesState {
     readonly articles: Articles,
     readonly article: Article | null,
     readonly articleTitle: string,
@@ -18,7 +18,7 @@ export interface ArticlesState{
     readonly error: Error | null,
 }
 
-const ARTICLES_INITIAL_STATE:ArticlesState = {
+const ARTICLES_INITIAL_STATE: ArticlesState = {
     articles: [],
     article: null,
     articleTitle: "",
@@ -42,14 +42,6 @@ export const articlesReducer = (state = ARTICLES_INITIAL_STATE, action = {} as A
         }
     }
 
-    if (fetchArticlesFailure.match(action)) {
-        return {
-            ...state,
-            error: action.payload,
-            isLoading: false,
-        }
-    }
-
     if (setArticlesSearchedStart.match(action)) {
         return {
             ...state,
@@ -65,7 +57,7 @@ export const articlesReducer = (state = ARTICLES_INITIAL_STATE, action = {} as A
         }
     }
 
-    if (setArticlesSearchedFailure.match(action)) {
+    if (fetchArticlesFailure.match(action) || setArticlesSearchedFailure.match(action)) {
         return {
             ...state,
             error: action.payload,

@@ -1,4 +1,4 @@
-.articleCardSmall {
+.articleCardSmall,.articleCardMedium,.articleCardLarg {
     height: 37.5vh;
 }
 
@@ -16,6 +16,7 @@
     display: block;
     position: relative;
     width: 18vw;
+    right: 0;
     margin-top: 24px;
     background-color: rgba(0, 0, 0, 0.5);
     border: 4px solid black;
@@ -23,6 +24,9 @@
     flex-shrink: 0;
     transition: height 0.15s linear;
     cursor: pointer;
+    // top: 18vw;
+    // transform-origin: top right;
+    // transform: rotate(90deg);
 
     //头像部分的背景板
     & .profileBlocks {
@@ -160,14 +164,22 @@
 .articleCardMedium:hover,
 .articleCardLarg:hover {
     height: 65vh;
+    overflow: visible;
 }
 
-.coverImage {
+.coverBox {
     display: block;
     border-radius: inherit;
     width: 100%;
     height: calc(100% - 12.5vh);
-    object-fit: cover;
-    object-position: top;
-    z-index: 0;
+
+    & img {
+        display: block;
+        border-radius: inherit;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        z-index: 0;
+    }
 }

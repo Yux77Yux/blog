@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import { useNavigate,Link } from "react-router-dom";
 
 import NavOption from '../navOption/navOption.component'
 import { NavOptionType } from '../../routes/navigation/navigation.component';
@@ -24,10 +24,10 @@ const NavOptions = (props: NavOptionsProps) => {
                     <NavOption navOption={option} key={option.Id} />
                 ))
             }
-            <div className="navOption" >
+            <Link to="" className="navOption" >
                 <div className="activePart"></div>
                 <span className="text" onClick={backHandler}>返回</span>
-            </div>
+            </Link>
         </div>
     );
 }

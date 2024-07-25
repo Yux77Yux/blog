@@ -5,21 +5,21 @@ import Spinner from '../../components/spinner/spinner.component';
 
 import './push.styles.scss';
 
-const Home = (props: PushProps) => {
-    const { load, articleCardFlows,setPageNum } = props;
+const PUSH = (props: PushProps) => {
+    const { load, articleCardFlows,pageNum,setPageNum,articlesLength } = props;
     if (!articleCardFlows) {
         return <Spinner />;
     }
 
     return <div className="pushBox">
-        <ArticlesSearched setPageNum={setPageNum} />
+        <ArticlesSearched pageNum={pageNum} setPageNum={setPageNum} articlesLength={articlesLength} />
         <div className="flowsBox">
             {
                 load ? <Spinner />
-                    : <ArticleCardFlows setPageNum={setPageNum} articleCardFlows={articleCardFlows} />
+                    : <ArticleCardFlows pageNum={pageNum} articleCardFlows={articleCardFlows} />
             }
         </div>
     </div>;
 }
 
-export default withProcess(Home);
+export default withProcess(PUSH);

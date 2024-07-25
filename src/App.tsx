@@ -18,11 +18,11 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div className='contentBody'>
       <VideoBackground video="bg.mp4" />
       <PersonProfileNav />
       <Outlet />
-    </>
+    </div>
   );
 }
 

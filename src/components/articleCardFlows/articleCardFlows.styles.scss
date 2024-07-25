@@ -4,19 +4,33 @@
     position: absolute;
     top: 0;
     height: 89.1vh;
-    width: auto;
-    transition: left 860ms ease-in-out;
+    transform: translateX(0.48vw);
+    transition: left 100ms ease-in-out;
     //left: -63vw; //单位
     left: 0vw;
+    overflow: hidden;
+    scroll-behavior:smooth;
+    scrollbar-width: none;
 
-    & .articleCardFlow {
-        display: flex;
+    & .flowBox{
+        display: block;
         position: relative;
         margin: 0 1.5vw;
-        width: auto;
+        width: 18vw;
+        height: 89.1vh;
         left: 0;
-        flex-direction: column;
-        overflow-y: auto;
+        overflow: auto;
         scrollbar-width: none;
+
+        & .articleCardFlow {
+            display: block;
+            float: left;
+            position: absolute;
+            width: 18vw;
+            height: auto;
+            left: 0;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
     }
 }

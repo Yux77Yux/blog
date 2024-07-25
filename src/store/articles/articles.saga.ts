@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { takeLatest, all, call, put, select } from 'typed-redux-saga/macro';
 import { getArticlesAsync } from "../../utils/data";
-import { ARTICLES_ACTION_TYPES, Article, ArticleFlow, Articles, ArticlesPage } from "./articles.types";
+import { ARTICLES_ACTION_TYPES, Article, ArticleFlow, Articles } from "./articles.types";
 import {
     FetchArticlesStart,
     fetchArticlesSuccess,
@@ -23,18 +24,20 @@ import { getArticlesMapAsync } from '../../utils/processData/articles.utils';
 export function* fetchArticlesAsync({ payload }: FetchArticlesStart) {
     try {
         const articlesData: ArticleFlow = yield* call(getArticlesAsync);
-        const articlesPage: ArticlesPage = yield* call(getArticlesMapAsync, articlesData, payload);
+        const articlesNew: Articles = yield* call(getArticlesMapAsync, articlesData, payload);
 
         const title = yield* select(getArticlesSearchedSelector);
         let articles: Articles = yield* select(getArticlesSelector);
 
-        if (payload === ""|| payload !== title) {
+        if (payload !== title) {
             articles = [];
-            articles.push(articlesPage);
+            articles = articlesNew;
+            yield* put(setArticlesSearchedStart(payload));
+        } else {
+            articles = [...articles, ...articlesNew];
         }
 
         yield* put(fetchArticlesSuccess(articles));
-        yield* put(setArticlesSearchedStart(payload))
     } catch (error) {
         yield* put(fetchArticlesFailure(error as Error));
     }

@@ -7,85 +7,6 @@
     border-radius: 50px 0 0 50px;
     background-color: rgba(228, 235, 227, 0.2);
 
-    & .inputBox {
-        display: flex;
-        position: absolute;
-        top: 30px;
-        left: 22%;
-        height: 50px;
-        width: 56%;
-        background-color: rgba(255, 255, 255, 0.589);
-        border-radius: 10px;
-        font-family: Arial, Helvetica, sans-serif;
-
-        & input {
-            display: block;
-            position: absolute;
-            top: 5px;
-            left: 4px;
-            height: 40px;
-            width: 83%;
-            padding: 15px 10px;
-            outline: none;
-            background-color: rgb(255, 255, 255, 0);
-            border-radius: 8px;
-            color: black;
-            border: 0px;
-            font-size: 20px;
-
-            &:focus {
-                background-color: rgba(227, 229, 231, 0.6);
-            }
-
-            &:not(:placeholder-shown)+.crossMark {
-                display: block;
-            }
-        }
-
-        & .magnifying-glass {
-            display: block;
-            position: absolute;
-            top: 5px;
-            left: 85%;
-            width: 12%;
-            height: 40px;
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0);
-            background-image: url('../../assets/magnifying-glass.png');
-            background-size: 25px;
-            background-repeat: no-repeat;
-            background-position: center;
-            cursor: pointer;
-
-            &:hover {
-                background-color: rgba(227, 229, 231, 0.6);
-            }
-        }
-
-        & .crossMark {
-            display: none;
-            position: absolute;
-            top: 16px;
-            left: 76%;
-            cursor: pointer;
-            height: 20px;
-            width: 20px;
-            background-image: url('../../assets/icons8-cross-mark-50.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            border-radius: 25px;
-
-            &:hover {
-                background-image: url('../../assets/icons8-cross-mark-51.png');
-            }
-        }
-
-        &:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-    }
-
     & .searchCategories {
         display: flex;
         flex-direction: row;
@@ -134,5 +55,9 @@
         border-radius: 10px;
         background-color: rgb(4, 79, 141);
         transition: all 320ms linear;
+    }
+
+    & .filterContent {
+        display: block;
     }
 }

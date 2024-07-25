@@ -1,4 +1,4 @@
-import { ArticleFlow, ArticlesPage } from "../../store/articles/articles.types";
+import { ArticleFlow, Articles } from "../../store/articles/articles.types";
 
 
 /*export const processDatas = (articles:any) => {
@@ -28,11 +28,11 @@ import { ArticleFlow, ArticlesPage } from "../../store/articles/articles.types";
     downloadJSON(datas, 'articles.json');
 }*/
 
-export function _slices(datas:ArticleFlow, group:ArticlesPage) {
+export function _slices(datas:ArticleFlow, group:Articles) {
     if (datas.length === 0) return [];
     let i = 0;
     let sliceNum = group.length;
-    group[sliceNum] = []
+    group[sliceNum] = [];
     while (i + sliceNum * 5 < datas.length && i < 5) {
         group[sliceNum][i] = datas[i + sliceNum * 5];
         i++;
@@ -43,7 +43,7 @@ export function _slices(datas:ArticleFlow, group:ArticlesPage) {
     }
 }
 
-export const getArticlesMapAsync = async (articles: ArticleFlow, title = ""): Promise<ArticlesPage> => {
+export const getArticlesMapAsync = async (articles: ArticleFlow, title = ""): Promise<Articles> => {
     if (!Array.isArray(articles)) {
         console.log("getArticlesMapAsync/failure");
         return [];
@@ -51,7 +51,7 @@ export const getArticlesMapAsync = async (articles: ArticleFlow, title = ""): Pr
 
     const articlesFilter = articles.filter(article => article.title.includes(title));
 
-    let group:ArticlesPage = [];
+    let group:Articles = [];
     await _slices(articlesFilter, group);
     return group;
 }

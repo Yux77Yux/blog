@@ -16,10 +16,7 @@ export enum ARTICLES_ACTION_TYPES {
     SET_ARTICLES_SEARCHED_FAILURE = 'articles/SET_ARTICLES_FAILURE',
 }
 
-export type Articles = ArticlesPage[];
-
-export type ArticlesPage = ArticleFlow[];
-
+export type Articles = ArticleFlow[];
 export type ArticleFlow = ArticleBrief[];
 
 export interface ArticleBrief {
@@ -36,7 +33,7 @@ export interface ArticleBrief {
     likes: number | 0, // 点赞次数
     author: string,//作者名，后端传过来
     profile: string,//作者头像，同上
-}
+}//总共13个字段
 
 export interface Article extends ArticleBrief {
     content: string, //文章内容

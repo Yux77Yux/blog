@@ -1,25 +1,19 @@
-import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './articleCard.styles.scss';
 
 const ArticleCard = (props) => {
-    const navigate = useNavigate();
     const { articleCard } = props;
-    const { profile, coverImageUrl,uuid } = articleCard;
+    const { profile, coverImageUrl, uuid } = articleCard;
     const coverImageUrlPath = require(`../../assets/${coverImageUrl}`);
     const profileImage = require(`../../assets/${profile}`);
-    
-    const cardClick = useCallback(() => {
-        const url = `${window.location.origin}/articles/${uuid}`;
-        window.open(url, '_blank');
-    }, [uuid,navigate]);
 
     return (
         <>
             <div className={articleCard.coverDimensions}>
-                <img src={coverImageUrlPath} alt="XwX" className="coverImage" onClick={cardClick} />
-
+                <Link to={`/articles/${uuid}`} className="coverBox">
+                    <img src={coverImageUrlPath} alt="XwX" className="coverImage" />
+                </Link>
                 <div className="profileBlocks">
                     <div className="profileBlockMain"></div>
                     <div className="profileBlockLeft"></div>
