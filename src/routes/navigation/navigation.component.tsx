@@ -19,18 +19,10 @@ const Navigation = () => {
         },
         {
             Id: 2,
-            title: "/dateArrange",
-            titleName: "日程",
-        },
-        {
-            Id: 3,
             title: "/favorites",
             titleName: "收藏",
         },
     ];
-
-
-
     return (
         <>
             <div className="navbarBox">

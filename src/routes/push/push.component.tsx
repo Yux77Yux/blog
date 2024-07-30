@@ -16,7 +16,7 @@ const PUSH = (props: PushProps) => {
         <div className="flowsBox">
             {
                 load ? <Spinner />
-                    : <ArticleCardFlows pageNum={pageNum} articleCardFlows={articleCardFlows} />
+                    : <ArticleCardFlows pageNum={pageNum} setPageNum={setPageNum} articleCardFlows={articleCardFlows} />
             }
         </div>
     </div>;

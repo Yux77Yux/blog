@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ComponentType, KeyboardEventHandler, MouseEventHandler, useCallback, useEffect, useState } from 'react';
+import { ChangeEventHandler, ComponentType, KeyboardEventHandler, MouseEventHandler, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { fetchArticlesStart } from '../../store/articles/articles.action';
 import './articlesSearched.styles.scss';
 
-export interface HandlersAndProps {
+export interface HandlersAndOthers {
     moveHandler: MouseEventHandler<HTMLDivElement>,
     searchHandler: MouseEventHandler<HTMLDivElement>,
     clearSearchedHandler: MouseEventHandler<HTMLDivElement>,
@@ -20,16 +20,17 @@ export interface HandlersAndProps {
     left: string,
 }
 
-export interface SearchedProps extends HandlersAndProps {
+export interface SearchedProps extends HandlersAndOthers {
     pageNum: number,
     setPageNum: React.Dispatch<React.SetStateAction<number>>,
     articlesLength: number,
 }
 
 export const withProcess = (Component: ComponentType<SearchedProps>) =>
-    (props: Omit<SearchedProps, keyof HandlersAndProps>) => {
+    (props: Omit<SearchedProps, keyof HandlersAndOthers>) => {
         const { setPageNum, articlesLength, pageNum } = props;
         const [left, setLeft] = useState('0');
+        const [placeholder, setPlaceholder] = useState("");
         const dispatch = useDispatch();
 
         useEffect(() => {
@@ -40,7 +41,7 @@ export const withProcess = (Component: ComponentType<SearchedProps>) =>
                 const item = pageItem as HTMLElement;
                 item.style.width = bits * 1.5 + 'vh';
             });
-        }, [articlesLength])
+        }, [articlesLength]);
 
         useEffect(() => {
             const pageItems = document.querySelectorAll('.pageItem');
@@ -74,40 +75,51 @@ export const withProcess = (Component: ComponentType<SearchedProps>) =>
 
             const moveNums = '-' + (2.5 * moveNum + 1.50 * move) + 'vh';
             setLeft(() => moveNums);
-        }, [pageNum])
+        }, [pageNum]);
 
         useEffect(() => {
             const firstPage = document.querySelector('.firstPage') as HTMLElement;
             const prevPage = document.querySelector('.prevPage') as HTMLElement;
             const nextPage = document.querySelector('.nextPage') as HTMLElement;
             const endPage = document.querySelector('.endPage') as HTMLElement;
+            const turnLeft = document.querySelector('.turnLeft') as HTMLElement;
+            const turnRight = document.querySelector('.turnRight') as HTMLElement;
 
-            if (!firstPage || !prevPage || !nextPage || !endPage) return;
+
+            if (!firstPage || !prevPage || !nextPage || !endPage || !turnLeft || !turnRight) return;
 
             firstPage.style.pointerEvents = 'auto';
             prevPage.style.pointerEvents = 'auto';
             nextPage.style.pointerEvents = 'auto';
             endPage.style.pointerEvents = 'auto';
+            turnLeft.style.pointerEvents = 'auto';
+            turnRight.style.pointerEvents = 'auto';
 
             firstPage.style.opacity = '1';
             prevPage.style.opacity = '1';
             nextPage.style.opacity = '1';
             endPage.style.opacity = '1';
+            turnLeft.style.opacity = '1';
+            turnRight.style.opacity = '1';
 
             if (pageNum === 1) {
                 firstPage.style.pointerEvents = 'none';
                 prevPage.style.pointerEvents = 'none';
+                turnLeft.style.pointerEvents = 'none';
 
                 firstPage.style.opacity = '0.2';
                 prevPage.style.opacity = '0.2';
+                turnLeft.style.opacity = '0.5';
             }
 
             if (pageNum === Math.ceil(articlesLength / 3)) {
                 nextPage.style.pointerEvents = 'none';
                 endPage.style.pointerEvents = 'none';
+                turnRight.style.pointerEvents = 'none';
 
                 nextPage.style.opacity = '0.2';
                 endPage.style.opacity = '0.2';
+                turnRight.style.opacity = '0.5';
             }
             //selectPage
         }, [pageNum, articlesLength]);
@@ -163,18 +175,18 @@ export const withProcess = (Component: ComponentType<SearchedProps>) =>
 
         const prevPageHandler = useCallback((event: React.MouseEvent) => {
             setPageNum((prevPageNum) => prevPageNum - 1);
-        }, [articlesLength]);
+        }, []);
 
         const selectPageHandler = useCallback((event: React.MouseEvent) => {
-            const target = event.target as HTMLLIElement;
+            const target = event.target as HTMLElement;
             if (!target) return;
             const value = parseInt(target.innerText);
             setPageNum(() => value);
-        }, [articlesLength]);
+        }, []);
 
         const nextPageHandler = useCallback((event: React.MouseEvent) => {
             setPageNum((prevPageNum) => prevPageNum + 1);
-        }, [articlesLength]);
+        }, []);
 
         const endPageHandler = useCallback((event: React.MouseEvent) => {
             setPageNum(() => Math.ceil(articlesLength / 3));

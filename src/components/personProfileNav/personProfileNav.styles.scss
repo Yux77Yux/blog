@@ -1,24 +1,23 @@
 .personProfileNavBox {
     & .personInfoNav {
         position: absolute;
-        height: 60px;
+        height: 8vh;
         background: linear-gradient(to bottom, rgba(80, 41, 41, 0.8) 3%, rgba(30, 30, 30, 1) 50%, rgb(0, 0, 0) 100%);
-        max-width: 300px;
-        min-width: 300px;
-        margin-top: 25px;
-        top: 100px;
+        width: 17.5vw;
+        margin-top: 3.3vh;
+        top: 12.5vh;
         left: 0;
         border: 1px solid #696464;
         border-radius: 0 50px 50px 0;
         z-index: 6;
-        transition: all 210ms linear;
-        transform: translateX(-240px);
+        transition: transform 210ms linear;
+        transform: translateX(-14vw);
 
         & .iconPortrait {
             display: block;
             position: absolute;
-            height: 54px;
-            width: 54px;
+            height: 7vh;
+            width: 7vh;
             cursor: pointer;
             background: rgb(49, 48, 48);
             border: 1px solid rgba($color: #696464, $alpha: 1);
@@ -66,8 +65,8 @@
     }
 
     &:hover .iconPortrait {
-        height: 100px;
-        width: 100px;
+        height: 12vh;
+        width: 12vh;
         top: 0;
     }
 
@@ -76,45 +75,47 @@
         position: absolute;
         flex-direction: column;
         left: 0;
-        top: -10px;
+        top: -1vh;
         left: 0;
         z-index: 5;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        transform: translateX(-300px);
-        transition: all 230ms linear;
+        transform: translateX(-17.5vw);
+        transition: transform 230ms linear;
 
         & .dropOptions {
-            display: block;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
             position: absolute;
-            width: 300px;
+            width: 17.5vw;
             height: auto;
-            top: 135px;
-            margin-top: 35px;
-            padding-top: 60px;
+            top: 17vh;
+            margin-top: 5vh;
+            padding-top: 6vh;
             background-color: rgba(46, 46, 46, 1);
-            border-bottom: 15px solid rgb(92, 28, 28);
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
+            border: 15px solid rgb(92, 28, 28);
+            border-radius: 15px;
+            border-radius: 15px;
 
             & .dropOption {
                 position: relative;
                 display: block;
-                width: 180px;
-                height: 56px;
-                left: 12px;
-                margin-bottom: 8px;
+                width: 6vw;
+                height: 10vh;
+                left: 1vw;
+                margin: 1vh;
                 background-color: rgb(30, 30, 30);
                 border: 1px solid rgb(70, 0, 41);
                 border-radius: 15px;
-                border-bottom: 1px solid rgb(211, 51, 158);
+                border-bottom: 1px solid rgb(214, 49, 159);
                 text-align: center;
                 cursor: pointer;
 
                 & .text {
                     display: block;
                     color: white;
-                    margin-top: 15px;
+                    margin-top: 3.5vh;
                     font-size: 22px;
                 }
 

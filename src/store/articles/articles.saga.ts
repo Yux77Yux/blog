@@ -26,18 +26,23 @@ export function* fetchArticlesAsync({ payload }: FetchArticlesStart) {
         const articlesData: ArticleFlow = yield* call(getArticlesAsync);
         const articlesNew: Articles = yield* call(getArticlesMapAsync, articlesData, payload);
 
-        const title = yield* select(getArticlesSearchedSelector);
-        let articles: Articles = yield* select(getArticlesSelector);
+        yield* put(setArticlesSearchedStart(payload));
 
+        /*
+        let articles: Articles = yield* select(getArticlesSelector);
+        articles = [];
+        articles = articlesNew;
+
+        const title = yield* select(getArticlesSearchedSelector);
         if (payload !== title) {
             articles = [];
             articles = articlesNew;
             yield* put(setArticlesSearchedStart(payload));
         } else {
             articles = [...articles, ...articlesNew];
-        }
+        }*/
 
-        yield* put(fetchArticlesSuccess(articles));
+        yield* put(fetchArticlesSuccess(articlesNew));
     } catch (error) {
         yield* put(fetchArticlesFailure(error as Error));
     }

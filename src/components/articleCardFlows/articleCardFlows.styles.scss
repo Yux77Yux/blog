@@ -9,10 +9,10 @@
     //left: -63vw; //单位
     left: 0vw;
     overflow: hidden;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     scrollbar-width: none;
 
-    & .flowBox{
+    & .flowBox {
         display: block;
         position: relative;
         margin: 0 1.5vw;
@@ -33,4 +33,34 @@
             scrollbar-width: none;
         }
     }
+}
+
+.turnLeft,
+.turnRight {
+    display: block;
+    position: absolute;
+    height: 10vh;
+    width: 2vw;
+    top: 39.55vh;
+    background-color: rgb(136, 110, 128);
+    background-image: url('../../assets/arrow/left-arrow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(167, 164, 164);
+    }
+}
+
+.turnLeft {
+    left: 0;
+    border-radius: 2vh 0 0 2vh;
+}
+
+.turnRight {
+    right: 0;
+    border-radius: 2vh 0 0 2vh;
+    transform: rotate(180deg);
 }

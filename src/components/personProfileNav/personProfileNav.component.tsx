@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { getUserSelector } from '../../store/user/user.seletor';
 
 import './personProfileNav.styles.scss'
 
 const PersonProfileNav = () => {
+    const currentUser = useSelector(getUserSelector);
     const MingChaoLogo = require("../../assets/mingchao3.svg").ReactComponent;
     const dropOptions = [
         {
@@ -13,11 +17,6 @@ const PersonProfileNav = () => {
         {
             Id: 2,
             title: "个人中心",
-            toURL: "/",
-        },
-        {
-            Id: 3,
-            title: "退出",
             toURL: "/",
         },
     ];
@@ -40,12 +39,19 @@ const PersonProfileNav = () => {
                             </Link>
                         )
                     }
-                    <div className="dropOption">
-                        <span className="text">登录</span>
-                    </div>
-                    <div className="dropOption">
-                        <span className="text">注册</span>
-                    </div>
+                    {
+                        currentUser ? <Link to="/authentication/sign-out" className="dropOption">
+                            <span className="text">退出</span>
+                        </Link>
+                            : <>
+                                <Link to="/authentication/sign-in" className="dropOption">
+                                    <span className="text">登录</span>
+                                </Link>
+                                <Link to="/authentication/sign-up" className="dropOption">
+                                    <span className="text">注册</span>
+                                </Link>
+                            </>
+                    }
                 </div>
             </div>
         </div>

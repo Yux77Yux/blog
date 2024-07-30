@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { withProcess, SearchedProps } from './articlesSearched.process';
-import InputBox from '../inputBox/inputBox.component';
+import SearchInputBox from '../searchInputBox/searchInputBox.component';
 import SelectPageBox from '../selectPageBox/selectPageBox.component';
 
 import './articlesSearched.styles.scss';
@@ -22,7 +22,7 @@ const ArticlesSearched = (props: SearchedProps) => {
     } = props;
 
     return <div className="searchBox">
-        <InputBox
+        <SearchInputBox
             enterHandler={enterHandler}
             clearSearchedHandler={clearSearchedHandler}
             searchHandler={searchHandler}

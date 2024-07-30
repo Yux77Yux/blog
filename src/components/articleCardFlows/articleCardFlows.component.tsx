@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import ArticleCard from '../articleCard/articleCard.component';
 
@@ -11,13 +11,22 @@ import './articleCardFlows.styles.scss';
 export interface ArticleCardFlowsProps {
     articleCardFlows: Articles,
     pageNum: number,
+    setPageNum: React.Dispatch<React.SetStateAction<number>>,
 }
 
 const ArticleCardFlows = (props: ArticleCardFlowsProps) => {
-    const { articleCardFlows, pageNum } = props;
+    const { articleCardFlows, pageNum, setPageNum } = props;
     const [left, setLeft] = useState('0');
     const [renderedCards, setRenderedCards] = useState<JSX.Element[]>([]);
     const currentIndexRef = useRef(0);
+
+    const prevPageHandler = useCallback((event: React.MouseEvent) => {
+        setPageNum((prevPageNum) => prevPageNum - 1);
+    }, []);
+
+    const nextPageHandler = useCallback((event: React.MouseEvent) => {
+        setPageNum((prevPageNum) => prevPageNum + 1);
+    }, []);
 
     const renderHandler = useCallback((currentFlow: ArticleFlow, newIndex: number): JSX.Element => {
         return <div className="flowBox" key={newIndex}>
@@ -62,6 +71,10 @@ const ArticleCardFlows = (props: ArticleCardFlowsProps) => {
     return <>
         <div className="articleCardFlows" style={{ left: `${left}` }}>
             {renderedCards}
+        </div>
+        <div className="turnLeft" onClick={prevPageHandler}>
+        </div>
+        <div className="turnRight" onClick={nextPageHandler}>
         </div>
     </>;
 }

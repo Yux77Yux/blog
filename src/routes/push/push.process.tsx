@@ -36,7 +36,7 @@ export function withProcess(Component: ComponentType<PushProps>) {
             setPrevTitle(() => title);
         }, [title]);
 
-        let other = {
+        const other = {
             load: isLoading,
             articleCardFlows: articles,
             pageNum: pageNum,

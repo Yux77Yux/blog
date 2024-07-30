@@ -55,17 +55,8 @@ export const withProcessNav = (Component: ComponentType<ArticlesDetailProps>) =>
             navigate("/push");
             return;
         }
-        /*let id = parseInt(uuid as string);
-        let page = id / 300;
-        let flow = (id % 300) / 5;
-        let index = id % 5;
-        index = (index + 4) % 5;
-        index = Math.floor(index);
-        flow = index === 4 ? (flow + 59) % 60 : flow;
-        flow = Math.floor(flow);
-        page = flow === 59 && index === 4 ? page - 1 : page;
-        page = Math.floor(page);*/
-
+        
+        //请求替换点
         const foundArticle = searchArticle(uuid);
 
         if (!foundArticle) {
