@@ -1,0 +1,321 @@
+.openCard {
+    display: block;
+    position: absolute;
+    top: 45vh;
+    height: 2vw;
+    width: 2vw;
+    border-top-right-radius: 2vh;
+    border-bottom-right-radius: 2vh;
+    border: 0;
+    border-right: 1px solid rgb(195, 180, 151);
+    background-color: transparent;
+    background-image: url('../../assets/arrow/right-arrow-next-svgrepo-com.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: left 0.8s linear;
+    left: -10vw;
+    cursor: pointer;
+}
+
+.pageFloat {
+    display: block;
+    position: absolute;
+    height: 100vh;
+    width: 34vw;
+    overflow: auto;
+    scrollbar-width: none;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 35%, rgba(0, 0, 0, 0.4) 35%, rgba(37, 5, 10, 0.6) 100%);
+    color: rgb(195, 180, 151);
+    transition: transform 0.5s linear;
+    z-index: 1;
+
+    & .crossMark {
+        display: block;
+        position: absolute;
+        right: 1vw;
+        top: 3vh;
+        height: 1.5vw;
+        width: 1.5vw;
+        border: 0;
+        background-color: transparent;
+        background-image: url('../../assets/symbol/crossmark-svgrepo-com.svg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        transition: transform 0.3s linear;
+
+        &:hover {
+            transform: rotate(-360deg);
+        }
+    }
+
+    & .topline {
+        display: block;
+        position: absolute;
+        top: 13vh;
+        left: 18vw;
+        height: 1px;
+        width: 13vw;
+        border-bottom: 1px solid rgb(107, 97, 72);
+    }
+
+    & .profileDecorate {
+        display: block;
+        position: absolute;
+        top: 13vh;
+        left: 1.8vw;
+        height: 13vw;
+        width: 13vw;
+        transform: rotate(-45deg);
+        border-top: 1px solid rgb(202, 178, 134);
+        border-left: 1px solid rgb(202, 178, 134);
+        border-radius: 50%;
+        background-color: rgb(37, 31, 31);
+    }
+
+    & .profileDecorateFirst {
+        display: block;
+        position: absolute;
+        top: 13vh;
+        left: 1.8vw;
+        height: 13vw;
+        width: 13vw;
+        border-radius: 50%;
+        background-color: rgb(202, 178, 134);
+        clip-path: polygon(0% 0%, 35% 0%, 35% 100%, 0% 100%);
+    }
+
+    & .profileDecorateSecond {
+        display: block;
+        position: absolute;
+        top: 16.16vh;
+        left: 3.45vw;
+        height: 9.7vw;
+        width: 9.7vw;
+        border-radius: 50%;
+        background-color: rgb(107, 97, 72);
+    }
+
+    & .profileDecorateThird {
+        display: block;
+        position: absolute;
+        top: 15.8vh;
+        left: 3.3vw;
+        height: 10.2vw;
+        width: 10.2vw;
+        border: 1px solid rgb(107, 97, 72);
+        background-color: rgba(107, 97, 72, 0);
+    }
+
+    & .profile {
+        display: block;
+        position: absolute;
+        top: 17vh;
+        left: 3.8vw;
+        height: 9vw;
+        width: 9vw;
+        border-radius: 50%;
+        background-color: rgba(47, 46, 44, 1);
+        object-fit: cover;
+        object-position: center;
+        overflow: visible;
+    }
+
+    & .chooseProfileShadow {
+        display: block;
+        position: absolute;
+        top: 23.6vh;
+        left: 1.76vw;
+        height: 2.63vw;
+        width: 2.63vw;
+        background-color: rgba(89, 77, 53, 0.8);
+        border-right: 1px solid rgb(134, 127, 98);
+        box-shadow: -5px 0px 4px 2px rgba(89, 77, 53, 0.5);
+        border-radius: 50%;
+        opacity: 0.6;
+    }
+
+    & .chooseProfile {
+        display: block;
+        position: absolute;
+        top: 24.12vh;
+        left: 2.02vw;
+        height: 2.1vw;
+        width: 2.1vw;
+        border: 2px solid rgb(193, 171, 161);
+        border-radius: 50%;
+        background-color: rgb(12, 12, 12);
+        background-image: url('../../assets/symbol/ellipsis-two.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20px;
+        cursor: pointer;
+
+        &:hover {
+            border: 2px solid rgb(252, 237, 179);
+        }
+    }
+
+    & .name {
+        display: block;
+        position: absolute;
+        top: 20vh;
+        left: 18vw;
+        height: 4vh;
+        width: 13vw;
+        background-color: transparent;
+
+        & .text {
+            display: block;
+            position: absolute;
+            right: 3vw;
+            width: 10vw;
+            font-size: 3vh;
+            text-align: right;
+            color: white;
+            letter-spacing: 3px;
+            overflow: hidden;
+        }
+
+        & .renameIcon {
+            display: block;
+            position: absolute;
+            right: 0vw;
+            height: 3.5vh;
+            width: 3.5vh;
+            border: 1px solid rgb(77, 76, 71);
+            border-radius: 50%;
+            background-image: url('../../assets/symbol/writer-svgrepo-com.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 2.3vh;
+            cursor: pointer;
+
+            &:hover {
+                border: 1px solid rgb(246, 234, 174);
+            }
+        }
+    }
+
+    & .uid {
+        display: block;
+        position: absolute;
+        top: 30vh;
+        left: 18vw;
+        height: 4vh;
+        width: 13vw;
+        border-top: 1px solid #47240c;
+        border-bottom: 1px solid #47240c;
+        border-radius: 0 2vh 2vh 0;
+        background-color: transparent;
+
+        & .text {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: absolute;
+            font-size: 2.2vh;
+            margin: 0.5vh;
+            height: 3vh;
+            width: 10vw;
+
+            & .right {
+                letter-spacing: 2.5px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        }
+
+        & .copyIcon {
+            display: block;
+            position: absolute;
+            right: 0vw;
+            height: 3.4vh;
+            width: 3.4vh;
+            border: 1px solid rgb(77, 76, 71);
+            border-radius: 50%;
+            background-image: url('../../assets/symbol/copy-svgrepo-com.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 2.3vh;
+            cursor: pointer;
+
+            &:hover {
+                border: 1px solid rgb(246, 234, 174);
+            }
+        }
+    }
+
+    & .underline {
+        display: block;
+        position: absolute;
+        top: calc(12.92vh + 13vw);
+        left: calc(8.5vw);
+        height: 1px;
+        width: 9.5vw;
+        background-color: rgb(107, 97, 72);
+    }
+
+    & .bio {
+        display: block;
+        position: absolute;
+        top: calc(18vh + 13vw);
+        left: 1.8vw;
+        height: 15vh;
+        width: 30vw;
+        border-radius: 4vh;
+        background-color: rgb(37, 31, 31);
+
+        & .text {
+            display: block;
+            position: absolute;
+            left: 4vh;
+            padding-top: 3vh;
+            height: 15vh;
+            width: calc(30vw - 8vh);
+            font-size: 2.6vh;
+            letter-spacing: 2px;
+            overflow: auto;
+            scrollbar-width: none;
+            color: rgb(166, 161, 155);
+            cursor: pointer;
+        }
+
+        &:hover {
+            background-color: rgb(13, 12, 9);
+        }
+    }
+
+    & .buildTalk {
+        display: block;
+        position: absolute;
+        bottom: 3vh;
+        right: 3vw;
+        height: 5vh;
+        width: 6vw;
+        font-family: 'SmileySans';
+        font-size: 2.5vh;
+        color: rgb(195, 180, 151);
+        border: 1px solid rgb(195, 180, 151);
+        border-radius: 1vh;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+            border: 1px solid rgb(222, 222, 222);
+            color: rgb(222, 222, 222);
+        }
+    }
+}
+
+.personPage {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(37, 5, 10, 0.97) 35%, rgba(37, 5, 10, 0.97) 35%, rgba(37, 5, 10, 0.6) 100%);
+}

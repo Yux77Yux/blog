@@ -1,0 +1,13 @@
+.globalHint {
+    display: block;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(153, 155, 56);
+    color: #080808;
+    font-size: 20px;
+    transition: top 0.5s linear;
+    top: -15vh;
+    z-index: 100;
+}

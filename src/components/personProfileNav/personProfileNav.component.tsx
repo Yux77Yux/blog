@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -7,7 +8,14 @@ import './personProfileNav.styles.scss'
 
 const PersonProfileNav = () => {
     const currentUser = useSelector(getUserSelector);
-    const MingChaoLogo = require("../../assets/mingchao3.svg").ReactComponent;
+    const [profilePath, setProfilePath] = useState<string>(require("../../assets/mingchao2.svg").default);
+    useEffect(() => {
+        if (!currentUser) {
+            setProfilePath(() => require("../../assets/mingchao3.svg").default);
+            return;
+        };
+        setProfilePath(() => require(`../../assets/${currentUser.profile}`));
+    }, [currentUser]);
     const dropOptions = [
         {
             Id: 1,
@@ -17,24 +25,24 @@ const PersonProfileNav = () => {
         {
             Id: 2,
             title: "个人中心",
-            toURL: "/",
+            toURL: `/personPage/${currentUser?.uid || -1}`,
         },
     ];
 
     return (
         <div className="personProfileNavBox">
             <div className="personInfoNav">
-                <MingChaoLogo className="iconPortrait" />
-                <span className="username">宇Yux</span>
+                <img src={profilePath} alt="qwq erroe!" className="iconPortrait" />
+                <span className="username">{currentUser?.name || "漂泊者"}</span>
                 <span className="lightLine"></span>
-                <span className="SignInState">在线</span>
+                <span className="SignInState">{currentUser?.status === true ? "在线" : "离线"}</span>
             </div>
 
             <div className="dropPersonOptions">
                 <div className="dropOptions">
                     {
                         dropOptions.map(option =>
-                            <Link to="" className="dropOption" key={option.Id}>
+                            <Link to={option.toURL} className="dropOption" key={option.Id}>
                                 <span className="text">{option.title}</span>
                             </Link>
                         )

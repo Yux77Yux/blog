@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 import { store } from './store/store';
 
+import {
+  loader as personPageLoader
+} from './routes/personPage/personPage.component';
 import Spinner from './components/spinner/spinner.component';
 
 import './index.scss';
@@ -14,14 +17,19 @@ const App = lazy(() => import('./App'));
 const Navigation = lazy(() => import('./routes/navigation/navigation.component'));
 const Authentication = lazy(() => import('./routes/authentication/authentication.component'));
 const Push = lazy(() => import('./routes/push/push.component'));
-const PersonInfo = lazy(() => import('./routes/personInfo/personInfo.component'));
-const Favorites = lazy(() => import('./routes/favorites/favorites.component'));
 const ArticleDetail = lazy(() => import('./components/articleDetail/articleDetail.component'));
+const PersonPage = lazy(() => import('./routes/personPage/personPage.component'));
+const Favorites = lazy(() => import('./routes/favorites/favorites.component'));
+const ModifyProfile = lazy(() => import('./components/modifyProfile/modifyProfile.component'));
+const ModifyBio = lazy(() => import('./components/modifyBio/modifyBio.component'));
+const ModifyName = lazy(() => import('./components/modifyName/modifyName.component'));
+const ErrorPage = lazy(() => import('./components/ErrorPage/errorPage.component'));
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -38,10 +46,25 @@ const router = createBrowserRouter([
           {
             path: "favorites",
             element: <Favorites />,
+          }
+        ]
+      },
+      {
+        path: "personPage/:uid",
+        element: <PersonPage />,
+        loader: personPageLoader,
+        children: [
+          {
+            path: "modifyProfile",
+            element: <ModifyProfile />,
           },
           {
-            path: "personInfo",
-            element: <PersonInfo />,
+            path: "modifyBio",
+            element: <ModifyBio />,
+          },
+          {
+            path: "modifyName",
+            element: <ModifyName />,
           },
         ]
       },
@@ -56,12 +79,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
-  <Suspense fallback={< Spinner />}>
-<Provider store={ store } >
-<RouterProvider router={ router } />
-</Provider>
-</Suspense>
-</React.StrictMode>
+    <Suspense fallback={< Spinner />}>
+      <Provider store={store} >
+        <RouterProvider router={router} />
+      </Provider>
+    </Suspense>
+  </React.StrictMode>
 );
 
 reportWebVitals();

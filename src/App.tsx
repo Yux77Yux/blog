@@ -19,6 +19,7 @@ const App = () => {
 
   return (
     <div className='contentBody'>
+      <span className="globalHint"></span>
       <VideoBackground video="bg.mp4" />
       <PersonProfileNav />
       <Outlet />

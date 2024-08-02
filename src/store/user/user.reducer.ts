@@ -6,12 +6,14 @@ import {
     signUpWithEmailFailure,
     signOutSuccess,
     signOutFailure,
+    updateUserSuccess,
+    updateUserFailure,
 } from './user.actions';
-import { UserActive } from './user.types';
+import { UserIncidental } from './user.types';
 
 export interface UserState {
     readonly hint: string,
-    readonly userActive: UserActive | null,
+    readonly userActive: UserIncidental | null,
     readonly latestTime: Date | null,
     readonly error: Error | null,
 }
@@ -37,7 +39,7 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
     if (signUpWithEmailSuccess.match(action)) {
         return {
             ...state,
-            hint: action.payload,
+            hint: "注册成功",
             error: null,
         }
     }
@@ -52,10 +54,13 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
         }
     }
 
-    if (signUpWithEmailFailure.match(action)) {
+    if (updateUserSuccess.match(action)) {
         return {
             ...state,
-            hint: action.payload,
+            hint: "",
+            userActive: action.payload,
+            latestTime: new Date(),
+            error: null,
         }
     }
 
@@ -69,10 +74,27 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
         }
     }
 
+    if (signUpWithEmailFailure.match(action)) {
+        return {
+            ...state,
+            hint: action.payload,
+        }
+    }
+
     if (signOutFailure.match(action)) {
         return {
             ...state,
             hint: action.payload,
+        }
+    }
+
+    if (updateUserFailure.match(action)) {
+        return {
+            ...state,
+            hint: action.payload.message,
+            userActive: null,
+            latestTime: null,
+            error: action.payload,
         }
     }
 
