@@ -15,11 +15,13 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchArticlesStart(""));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='contentBody'>
-      <span className="globalHint"></span>
+      <span className="globalHint">
+        <span className="text"></span>
+      </span>
       <VideoBackground video="bg.mp4" />
       <PersonProfileNav />
       <Outlet />

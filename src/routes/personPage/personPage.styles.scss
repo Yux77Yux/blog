@@ -120,7 +120,7 @@
         background-color: rgba(47, 46, 44, 1);
         object-fit: cover;
         object-position: center;
-        overflow: visible;
+        overflow: hidden;
     }
 
     & .chooseProfileShadow {
@@ -318,4 +318,13 @@
     height: 100vh;
     width: 100%;
     background: linear-gradient(to bottom, rgba(37, 5, 10, 0.97) 35%, rgba(37, 5, 10, 0.97) 35%, rgba(37, 5, 10, 0.6) 100%);
+}
+
+.modifyBox {
+    display: block;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 5, 5, 0.8);
 }

@@ -1,0 +1,320 @@
+.profileModifyBox {
+    display: block;
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+    height: 90vh;
+    width: 90vw;
+    background-color: rgb(248, 248, 248);
+
+    & .crossMark {
+        display: block;
+        position: absolute;
+        right: 1vw;
+        top: 3vh;
+        height: 2vw;
+        width: 2vw;
+        border: 0;
+        background-image: url('../../assets/symbol/crossmark-svgrepo-com.svg');
+        background-color: transparent;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        transition: background-image 0.2s linear;
+
+        &:hover {
+            background-image: url('../../assets/symbol/crossmark-svgrepo-com-black.svg');
+        }
+    }
+
+    & .title {
+        display: block;
+        position: absolute;
+        height: 10vh;
+        width: 100%;
+        color: rgb(35, 35, 35);
+        border-bottom: 1px solid rgb(56, 56, 55);
+
+        & .text {
+            position: relative;
+            left: 2vw;
+            top: 1vh;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 1000;
+            font-size: 5vh;
+        }
+    }
+
+    & .from-box {
+        display: block;
+        position: absolute;
+        top: 10vh;
+        height: calc(100% - 10vh);
+        width: 100%;
+        border-top: 1px solid rgb(182, 182, 181);
+        overflow: hidden;
+
+        & input[type="file"] {
+            display: none;
+        }
+
+        & .uploadFileBox {
+            display: block;
+            position: absolute;
+            left: 3vw;
+            width: 50vw;
+            height: 80vh;
+            border: 1px solid rgb(170, 170, 157);
+            border-top: 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+
+            & #resultImg {
+                display: none;
+                position: absolute;
+                top: 5vh;
+                z-index: 5;
+                right: 5vw;
+                height: 30vh;
+                width: 30vh;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            & .uploadFile {
+                display: block;
+                position: absolute;
+                top: 5vh;
+                left: 1vw;
+                height: 40vh;
+                width: 40vh;
+                border: 1px solid rgb(170, 170, 157);
+                background-image: url('../../assets/symbol/plus-svgrepo-com.svg');
+                background-position: center;
+                background-size: 10vh;
+                background-repeat: no-repeat;
+                cursor: pointer;
+
+                & .progress-container {
+                    display: none;
+                    position: absolute;
+                    bottom: 10%;
+                    width: 100%;
+                    background-color: #f3f3f3;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    margin-top: 10px;
+                    pointer-events: none;
+
+                    & .progress-bar {
+                        width: 0;
+                        height: 30px;
+                        background-color: #4caf50;
+                        text-align: center;
+                        color: white;
+                        line-height: 30px;
+                        border-radius: 5px;
+                    }
+                }
+            }
+
+            & .profile-preview {
+                display: block;
+                position: absolute;
+                left: 5vw;
+                top: 50vh;
+                height: 60vh;
+                width: 60vh;
+                overflow: auto;
+                scrollbar-width: none;
+                z-index: 0;
+
+                & .profile-preview-img {
+                    display: block;
+                    position: absolute;
+                    object-position: 0%;
+                    cursor: grab;
+                }
+            }
+
+            & .circleBox {
+                display: block;
+                position: absolute;
+                left: 5vw;
+                top: 50vh;
+                height: 60vh;
+                width: 60vh;
+                opacity: 0.5;
+                pointer-events: none;
+
+                & .circleTopLeft {
+                    display: block;
+                    position: absolute;
+                    height: 60vh;
+                    width: 60vh;
+                    background: radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 70.5%, rgb(34, 34, 34) 70.5%, rgb(34, 34, 34) 100%);
+                    clip-path: polygon(0% 0%, 50% 0%, 50% 50%, 0% 50%);
+                }
+
+                & .circleTopRight {
+                    display: block;
+                    position: absolute;
+                    height: 60vh;
+                    width: 60vh;
+                    background: radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 70.5%, rgb(34, 34, 34) 70.5%, rgb(34, 34, 34) 100%);
+                    clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%);
+                }
+
+                & .circleBottomleft {
+                    display: block;
+                    position: absolute;
+                    height: 60vh;
+                    width: 60vh;
+                    background: radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 70.5%, rgb(34, 34, 34) 70.5%, rgb(34, 34, 34) 100%);
+                    clip-path: polygon(0% 50%, 50% 50%, 50% 100%, 0% 100%);
+                }
+
+                & .circleBottomRight {
+                    display: block;
+                    position: absolute;
+                    height: 60vh;
+                    width: 60vh;
+                    background: radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 70.5%, rgb(34, 34, 34) 70.5%, rgb(34, 34, 34) 100%);
+                    clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
+                }
+
+            }
+
+            & .fine {
+                margin: 0;
+                border: 0;
+                background-color: transparent;
+
+                display: none;
+                position: absolute;
+                right: 8vw;
+                top: 40vh;
+                height: 7vh;
+                width: 8vw;
+                background-color: black;
+                border-radius: 6px 0;
+                font-size: 3.5vh;
+                font-weight: 1000;
+                color: rgb(195, 180, 151);
+                cursor: pointer;
+            }
+
+            & .no-trim {
+                margin: 0;
+                border: 0;
+                background-color: transparent;
+
+                display: block;
+                position: absolute;
+                left: 9vw;
+                top: 112vh;
+                height: 7vh;
+                width: 8vw;
+                border-radius: 6px 0;
+                background-color: black;
+                font-size: 3.5vh;
+                font-weight: 1000;
+                color: rgb(195, 180, 151);
+                cursor: pointer;
+            }
+
+            & .trim {
+                margin: 0;
+                border: 0;
+                background-color: transparent;
+
+                display: block;
+                position: absolute;
+                left: 22vw;
+                top: 112vh;
+                height: 7vh;
+                width: 8vw;
+                border-radius: 6px 0;
+                background-color: black;
+                font-size: 3.5vh;
+                font-weight: 1000;
+                color: rgb(195, 180, 151);
+                cursor: pointer;
+            }
+        }
+
+        & .submit {
+            margin: 0;
+            border: 0;
+            background-color: transparent;
+
+            display: block;
+            position: absolute;
+            right: 15vw;
+            bottom: 5vh;
+            height: 7vh;
+            width: 8vw;
+            border-radius: 6px 0;
+            background-color: rgb(109, 109, 109);
+            font-size: 3.5vh;
+            font-weight: 1000;
+            color: rgb(195, 180, 151);
+            cursor: pointer;
+            pointer-events: none;
+        }
+    }
+
+    & .activeBox {
+        display: block;
+        position: absolute;
+        top: 10vh;
+        right: 1vw;
+        width: 35vw;
+        height: 60vh;
+
+        & .active-profile {
+            display: block;
+            position: absolute;
+            right: 3vw;
+            height: 30vh;
+            width: 30vh;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        & .active-profile-radius {
+            display: block;
+            position: absolute;
+            right: 20vw;
+            height: 30vh;
+            width: 30vh;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        & .new-profile {
+            display: none;
+            position: absolute;
+            top: 35vh;
+            right: 3vw;
+            height: 30vh;
+            width: 30vh;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        & .new-profile-radius {
+            display: none;
+            position: absolute;
+            top: 35vh;
+            right: 20vw;
+            height: 30vh;
+            width: 30vh;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}

@@ -1,17 +1,34 @@
 import { Form } from 'react-router-dom';
 
+import { withProcess, ModifyNameProps } from './modifyName.process';
 import './modifyName.styles.scss';
 
-const ModifyName = () => {
-    return <>
+const ModifyName = (props: ModifyNameProps) => {
+    const { activeUser, closeHandler, textChangeHandler, onSubmitHandler } = props;
+
+    return <div className="modifyBox">
         <div className="nameModifyBox">
-            <Form method='put'>
-                <span className="modifyItem"></span>
-                <input type="text" name="name" placeholder={`请输入新的名称`} />
-                <input type="submit" value="确认" />
+            <div className="titleBox">
+                <span className="text">设置漂泊者昵称</span>
+                <span className="crossMark" onClick={closeHandler}></span>
+            </div>
+            <Form method='put' className="contentBox" onSubmit={onSubmitHandler}>
+                <div className="textBox">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder={`${activeUser && activeUser.name}`}
+                        className="text"
+                        onChange={textChangeHandler}
+                    />
+                </div>
+                <div className="buttonBox">
+                    <input type="reset" value="取消" className="buttonBox-item" />
+                    <input type="submit" value="确认" className="buttonBox-item" />
+                </div>
             </Form>
         </div>
-    </>
+    </div>
 }
 
-export default ModifyName;
+export default withProcess(ModifyName);

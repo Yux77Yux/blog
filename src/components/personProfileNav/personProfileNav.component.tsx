@@ -14,7 +14,7 @@ const PersonProfileNav = () => {
             setProfilePath(() => require("../../assets/mingchao3.svg").default);
             return;
         };
-        setProfilePath(() => require(`../../assets/${currentUser.profile}`));
+        setProfilePath(() => currentUser.profile);
     }, [currentUser]);
     const dropOptions = [
         {

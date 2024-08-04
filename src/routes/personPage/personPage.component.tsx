@@ -6,6 +6,7 @@ import { getUserSelector } from '../../store/user/user.seletor';
 import { UserIncidental } from '../../store/user/user.types';
 
 import { fetchUserAsync } from '../../utils/processData/user.utils';
+import { hintMerge } from '../../utils/hint';
 import './personPage.styles.scss';
 
 export const loader = async ({ params }: LoaderFunctionArgs): Promise<UserIncidental | Response> => {
@@ -21,13 +22,19 @@ export const loader = async ({ params }: LoaderFunctionArgs): Promise<UserIncide
         }
         return currentUser;
     } catch (error) {
-        throw error as Error;
+        hintMerge("Error!");
+        console.log(error as Error);
+        return redirect("/");
     }
 };
 
 const PersonInfo = () => {
+    const data = useLoaderData(); // 默认返回类型为 unknown
     const navigate = useNavigate();
     const activeUser = useSelector(getUserSelector);
+    const currentUser = data as UserIncidental;
+    const isActiveUser = currentUser?.id === activeUser?.id || false;
+    const profile = currentUser?.profile || require('../../assets/mingchao2.svg').default;
 
     const hiddleHandler = useCallback(() => {
         const pageFloat = document.querySelector('.pageFloat') as HTMLDivElement;
@@ -44,33 +51,20 @@ const PersonInfo = () => {
         if (!uid) return;
         navigator.clipboard.writeText(uid.innerText);
 
-        const globalHint = document.querySelector('.globalHint') as HTMLSpanElement;
-        if (!globalHint) return;
-        globalHint.style.top = '0';
-        globalHint.textContent = '复制成功';
-        setTimeout(() => {
-            globalHint.style.top = '-15vh';
-            globalHint.textContent = '0';
-        }, 1500);
+        hintMerge("复制成功！");
     }, []);
 
-    const clickBioHandler = useCallback((event: React.MouseEvent) => {
+    const clickBioHandler = useCallback(() => {
         if (!activeUser || activeUser?.id !== currentUser.id) {
             return;
         } else {
             navigate("modifyBio");
         }
-    }, [activeUser]);
+    }, [activeUser, currentUser.id, navigate]);
 
-    const data = useLoaderData(); // 默认返回类型为 unknown
     if (data instanceof Error) {
         return <div>Error: {data.message}</div>;
     }
-    const currentUser = data as UserIncidental;
-
-    const isActiveUser = currentUser?.id === activeUser?.id || false;
-
-    const profile = require(`../../assets/${currentUser?.profile}`) || require('../../assets/mingchao2.svg').default;
 
     return <>
         <div className="personPage"></div>

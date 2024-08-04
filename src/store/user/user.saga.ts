@@ -3,21 +3,19 @@ import { takeLatest, all, call, put, select } from 'typed-redux-saga/macro';
 import {
     USER_ACTION_TYPES,
     UserIncidental,
-    UserModify,
     UsernameAndPassword
 } from "./user.types";
 import {
     SignInWithEmailStart,
     SignUpWithEmailStart,
-    UpdateUserStart,
     signInWithEmailSuccess,
     signInWithEmailFailure,
     signUpWithEmailSuccess,
     signUpWithEmailFailure,
     signOutSuccess,
     signOutFailure,
-    updateUserSuccess,
-    updateUserFailure,
+    fetchLatestUserSuccess,
+    fetchLatestUserFailure,
 } from './user.actions';
 import { getUserSelector } from './user.seletor';
 
@@ -25,10 +23,8 @@ import {
     userSignInAsync,
     userSignUpAsync,
     userSignOutAsync,
-    updateUserAsync,
+    fetchLatestUserAsync,
 } from '../../utils/processData/user.utils';
-
-type ResponseType = UserIncidental | { err: string };
 
 export function* signInAsync({ payload }: SignInWithEmailStart) {
     try {
@@ -70,31 +66,25 @@ export function* signOutAsync() {
         if (response instanceof Error) {
             throw response;
         }
-
         yield* put(signOutSuccess(response.success));
     } catch (error) {
         yield* put(signOutFailure((error as Error).message));
     }
 }
 
-export function* updateUser({ payload }: UpdateUserStart) {
+export function* fetchLatestUser() {
     const currentUser: UserIncidental | null = yield* select(getUserSelector);
     if (!currentUser) return;
-    const upload: { id: number } & UserModify = {
-        id: currentUser.id,
-        ...payload
-    }
 
     try {
-        const response = yield* call(updateUserAsync, upload);
+        const response: UserIncidental | Error = yield* call(fetchLatestUserAsync, currentUser.id);
 
         if (response instanceof Error) {
             throw response;
         }
-
-        yield* put(updateUserSuccess(response));
+        yield* put(fetchLatestUserSuccess(response));
     } catch (error) {
-        yield* put(updateUserFailure(error as Error));
+        yield* put(fetchLatestUserFailure(error as Error));
     }
 }
 
@@ -110,8 +100,8 @@ export function* onSignOutAsync() {
     yield* takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOutAsync);
 }
 
-export function* onUpdateUser() {
-    yield* takeLatest(USER_ACTION_TYPES.UPDATE_USER_START, updateUser);
+export function* onFetchLatestUserUser() {
+    yield* takeLatest(USER_ACTION_TYPES.FETCH_LATEST_USER_START, fetchLatestUser);
 }
 
 export function* userSaga() {
@@ -119,6 +109,6 @@ export function* userSaga() {
         call(onSignInAsync),
         call(onSignUpAsync),
         call(onSignOutAsync),
-        call(onUpdateUser),
+        call(onFetchLatestUserUser),
     ]);
 }

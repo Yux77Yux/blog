@@ -1,4 +1,4 @@
-import { UserModify, UserIncidental, UsernameAndPassword } from '../../store/user/user.types';
+import { UserIncidental, UsernameAndPassword } from '../../store/user/user.types';
 
 type ResponseType = UserIncidental | { err: string };
 
@@ -92,13 +92,26 @@ export const fetchUserAsync = async (uid: string): Promise<UserIncidental | null
     }
 }
 
-export const updateUserAsync = async (upload: { id: number } & UserModify): Promise<UserIncidental | Error> => {
-    const url = "http://localhost:3001/api/user/update-user";
+export const fetchLatestUserAsync = async (id: number): Promise<UserIncidental | Error> => {
+    const url = `http://localhost:3001/api/user/fetch-latest-user?id=${id}`;
+
+    try {
+        const response = await fetch(url, { method: 'GET' });
+        const data: { err: string } | UserIncidental = await response.json();
+        if (!response.ok) {
+            throw new Error(`${(data as { err: string }).err}`);
+        }
+        return data as UserIncidental;
+    } catch (error) {
+        return error as Error;
+    }
+}
+
+export const updateProfileAsync = async (upload: { id: number, profile: File }): Promise<string | Error> => {
+    const url = "http://localhost:3001/api/user/update-profile";
 
     const formData = new FormData();
     formData.append('id', upload.id.toString());
-    formData.append('name', upload.name);
-    formData.append('bio', upload.bio);
     formData.append('profile', upload.profile);
 
     try {
@@ -106,11 +119,53 @@ export const updateUserAsync = async (upload: { id: number } & UserModify): Prom
             method: 'PUT',
             body: formData
         });
-        const result: { err: string } | UserIncidental = await response.json();
-        if (!response.ok) {
+        const result: { success: string } | { err: string } = await response.json();
+        if (!response.ok || result instanceof Error) {
             throw new Error(`${(result as { err: string }).err}`);
         }
-        return result as UserIncidental;
+        return (result as { success: string; }).success ;
+    } catch (error) {
+        return error as Error;
+    }
+}
+
+export const updateNameAsync = async (upload: { id: number, name: string }): Promise<string | Error> => {
+    const url = "http://localhost:3001/api/user/update-name";
+
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(upload)
+        });
+        const result: { success: string } | { err: string } = await response.json();
+        if (!response.ok || result instanceof Error) {
+            throw new Error(`${(result as { err: string }).err}`);
+        }
+        return (result as { success: string; }).success ;
+    } catch (error) {
+        return error as Error;
+    }
+}
+
+export const updateBioAsync = async (upload: { id: number, bio: string }): Promise<string | Error> => {
+    const url = "http://localhost:3001/api/user/update-bio";
+
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(upload)
+        });
+        const result: { success: string } | { err: string } = await response.json();
+        if (!response.ok || result instanceof Error) {
+            throw new Error(`${(result as { err: string }).err}`);
+        }
+        return (result as { success: string; }).success ;
     } catch (error) {
         return error as Error;
     }

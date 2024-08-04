@@ -5,9 +5,9 @@ export enum USER_ACTION_TYPES {
     SIGN_UP_WITH_EMAIL_START = "user/SIGN_UP_WITH_EMAIL_START",
     SIGN_UP_WITH_EMAIL_SUCCESS = "user/SIGN_UP_WITH_EMAIL_SUCCESS",
     SIGN_UP_WITH_EMAIL_FAILURE = "user/SIGN_UP_WITH_EMAIL_FAILURE",
-    UPDATE_USER_START = "user/UPDATE_USER_START",
-    UPDATE_USER_SUCCESS = "user/UPDATE_USER_SUCCESS",
-    UPDATE_USER_FAILURE = "user/UPDATE_USER_FAILURE",
+    FETCH_LATEST_USER_START = "user/FETCH_LATEST_USER_START",
+    FETCH_LATEST_USER_SUCCESS = "user/FETCH_LATEST_USER_SUCCESS",
+    FETCH_LATEST_USER_FAILURE = "user/FETCH_LATEST_USER_FAILURE",
 
     SIGN_OUT_START = "/user/SIGN_OUT_START",
     SIGN_OUT_SUCCESS = "/user/SIGN_OUT_SUCCESS",
@@ -26,10 +26,4 @@ export interface UserIncidental {
     bio: string, //个性签名
     status: boolean, //登录状态
     popularity: number, //主页受欢迎程度，用于优先搜索
-}
-
-export interface UserModify {
-    name: string, //昵称，也可用于被搜索，允许可以更改
-    bio: string, //个性签名
-    profile: File, //头像图片地址
 }

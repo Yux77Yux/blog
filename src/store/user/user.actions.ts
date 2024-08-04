@@ -9,7 +9,6 @@ import {
     USER_ACTION_TYPES,
     UsernameAndPassword,
     UserIncidental,
-    UserModify
 } from './user.types';
 
 export type SignInWithEmailStart = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_WITH_EMAIL_START, UsernameAndPassword>;
@@ -24,9 +23,9 @@ export type SignOutStart = Action<USER_ACTION_TYPES.SIGN_OUT_START>;
 export type SignOutSuccess = ActionWithPayload<USER_ACTION_TYPES.SIGN_OUT_SUCCESS, string>;
 export type SignOutFailure = ActionWithPayload<USER_ACTION_TYPES.SIGN_OUT_SUCCESS, string>;
 
-export type UpdateUserStart = ActionWithPayload<USER_ACTION_TYPES.UPDATE_USER_START, UserModify>;
-export type UpdateUserSuccess = ActionWithPayload<USER_ACTION_TYPES.UPDATE_USER_SUCCESS, UserIncidental>;
-export type UpdateUserFailure = ActionWithPayload<USER_ACTION_TYPES.UPDATE_USER_FAILURE, Error>;
+export type FetchLatestUserStart = Action<USER_ACTION_TYPES.FETCH_LATEST_USER_START>;
+export type FetchLatestUserSuccess = ActionWithPayload<USER_ACTION_TYPES.FETCH_LATEST_USER_SUCCESS, UserIncidental>;
+export type FetchLatestUserFailure = ActionWithPayload<USER_ACTION_TYPES.FETCH_LATEST_USER_FAILURE, Error>;
 
 //Sign-In
 export const signInWithEmailStart = (payload: UsernameAndPassword): SignInWithEmailStart =>
@@ -71,15 +70,15 @@ export const signOutFailure = withMatcher(
 )
 
 //Update-User
-export const updateUserStart = (payload: UserModify): UpdateUserStart =>
-    createAction(USER_ACTION_TYPES.UPDATE_USER_START, payload)
+export const fetchLatestUserStart = (): FetchLatestUserStart =>
+    createAction(USER_ACTION_TYPES.FETCH_LATEST_USER_START, null)
 
-export const updateUserSuccess = withMatcher(
-    (payload: UserIncidental): UpdateUserSuccess =>
-        createAction(USER_ACTION_TYPES.UPDATE_USER_SUCCESS, payload)
+export const fetchLatestUserSuccess = withMatcher(
+    (payload: UserIncidental): FetchLatestUserSuccess =>
+        createAction(USER_ACTION_TYPES.FETCH_LATEST_USER_SUCCESS, payload)
 )
 
-export const updateUserFailure = withMatcher(
-    (payload: Error): UpdateUserFailure =>
-        createAction(USER_ACTION_TYPES.UPDATE_USER_FAILURE, payload)
+export const fetchLatestUserFailure = withMatcher(
+    (payload: Error): FetchLatestUserFailure =>
+        createAction(USER_ACTION_TYPES.FETCH_LATEST_USER_FAILURE, payload)
 )

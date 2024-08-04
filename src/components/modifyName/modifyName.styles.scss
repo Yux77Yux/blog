@@ -1,0 +1,133 @@
+.nameModifyBox {
+    display: block;
+    position: absolute;
+    top: 32vh;
+    left: 23vw;
+    height: 36vh;
+    width: 54vw;
+    background-color: rgb(247, 247, 247);
+
+    & .titleBox {
+        display: flex;
+        position: absolute;
+        flex-direction: row;
+        align-items: center;
+        left: 0.5vw;
+        height: 8vh;
+        width: 53vw;
+        border-bottom: 1px solid rgb(56, 56, 55);
+
+        & .text {
+            display: block;
+            position: absolute;
+            left: 1vw;
+            color: rgb(45, 45, 45);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3vh;
+            letter-spacing: 2px;
+            font-weight: 1000;
+        }
+
+        & .crossMark {
+            display: block;
+            position: absolute;
+            right: 1vw;
+            height: 2vw;
+            width: 2vw;
+            border: 0;
+            background-image: url('../../assets/symbol/crossmark-svgrepo-com.svg');
+            background-color: transparent;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: background-image 0.2s linear;
+
+            &:hover {
+                background-image: url('../../assets/symbol/crossmark-svgrepo-com-black.svg');
+            }
+        }
+    }
+
+    & .contentBox {
+        display: block;
+        position: absolute;
+        top: 8vh;
+        left: 0.5vw;
+        height: 30vh;
+        width: 53vw;
+        border-top: 1px solid rgb(182, 182, 181);
+
+        & .textBox {
+            display: block;
+            position: absolute;
+            top: 6vh;
+            left: 2vw;
+            width: 49vw;
+            height: 5vh;
+            border: 2px solid rgb(196, 196, 196);
+            border-radius: 6.5px;
+
+            & .text {
+                margin: 0;
+                border: 0;
+                padding: 8px;
+
+                display: block;
+                position: absolute;
+                left: 2px;
+                top: 2px;
+                width: 48.55vw;
+                height: 4.2vh;
+                background-color: rgb(166, 166, 166);
+                border-radius: 1px;
+                color: rgb(83, 83, 83);
+                font-size: 2.5vh;
+                text-align: left;
+                line-height: normal;
+                text-wrap: wrap;
+                overflow: auto;
+                scrollbar-width: none;
+                resize: none;
+
+                &:focus,
+                &:hover {
+                    outline: 0;
+                    background-color: rgb(149, 149, 149);
+                }
+            }
+        }
+
+        & .buttonBox {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 16vh;
+            left: 2vw;
+            height: 7.5vh;
+            width: 49vw;
+
+            & .buttonBox-item {
+                margin: 0;
+                border: 0;
+
+                border-radius: 6px 0;
+                height: 7.5vh;
+                width: 15vw;
+                background-color: #000;
+                color: #fff;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 3vh;
+                font-weight: 500;
+                cursor: pointer;
+
+                &:last-child {
+                    background-color: rgb(109, 109, 109);
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}
