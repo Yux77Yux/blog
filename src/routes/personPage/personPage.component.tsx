@@ -17,8 +17,8 @@ export const loader = async ({ params }: LoaderFunctionArgs): Promise<UserIncide
         }
 
         const currentUser = await fetchUserAsync(uid);
-        if (!currentUser) {
-            throw new Error('Failed to fetch user data.');
+        if (currentUser instanceof Error) {
+            throw currentUser;
         }
         return currentUser;
     } catch (error) {

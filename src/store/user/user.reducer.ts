@@ -6,8 +6,8 @@ import {
     signUpWithEmailFailure,
     signOutSuccess,
     signOutFailure,
-    fetchLatestUserSuccess,
-    fetchLatestUserFailure,
+    fetchUserSuccess,
+    fetchUserFailure,
 } from './user.actions';
 import { UserIncidental } from './user.types';
 
@@ -54,7 +54,7 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
         }
     }
 
-    if (fetchLatestUserSuccess.match(action)) {
+    if (fetchUserSuccess.match(action)) {
         return {
             ...state,
             hint: "",
@@ -88,7 +88,7 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
         }
     }
 
-    if (fetchLatestUserFailure.match(action)) {
+    if (fetchUserFailure.match(action)) {
         return {
             ...state,
             hint: action.payload.message,

@@ -23,9 +23,9 @@ export type SignOutStart = Action<USER_ACTION_TYPES.SIGN_OUT_START>;
 export type SignOutSuccess = ActionWithPayload<USER_ACTION_TYPES.SIGN_OUT_SUCCESS, string>;
 export type SignOutFailure = ActionWithPayload<USER_ACTION_TYPES.SIGN_OUT_SUCCESS, string>;
 
-export type FetchLatestUserStart = Action<USER_ACTION_TYPES.FETCH_LATEST_USER_START>;
-export type FetchLatestUserSuccess = ActionWithPayload<USER_ACTION_TYPES.FETCH_LATEST_USER_SUCCESS, UserIncidental>;
-export type FetchLatestUserFailure = ActionWithPayload<USER_ACTION_TYPES.FETCH_LATEST_USER_FAILURE, Error>;
+export type FetchUserStart = Action<USER_ACTION_TYPES.FETCH_USER_START>;
+export type FetchUserSuccess = ActionWithPayload<USER_ACTION_TYPES.FETCH_USER_SUCCESS, UserIncidental>;
+export type FetchUserFailure = ActionWithPayload<USER_ACTION_TYPES.FETCH_USER_FAILURE, Error>;
 
 //Sign-In
 export const signInWithEmailStart = (payload: UsernameAndPassword): SignInWithEmailStart =>
@@ -70,15 +70,15 @@ export const signOutFailure = withMatcher(
 )
 
 //Update-User
-export const fetchLatestUserStart = (): FetchLatestUserStart =>
-    createAction(USER_ACTION_TYPES.FETCH_LATEST_USER_START, null)
+export const fetchUserStart = (): FetchUserStart =>
+    createAction(USER_ACTION_TYPES.FETCH_USER_START, null)
 
-export const fetchLatestUserSuccess = withMatcher(
-    (payload: UserIncidental): FetchLatestUserSuccess =>
-        createAction(USER_ACTION_TYPES.FETCH_LATEST_USER_SUCCESS, payload)
+export const fetchUserSuccess = withMatcher(
+    (payload: UserIncidental): FetchUserSuccess =>
+        createAction(USER_ACTION_TYPES.FETCH_USER_SUCCESS, payload)
 )
 
-export const fetchLatestUserFailure = withMatcher(
-    (payload: Error): FetchLatestUserFailure =>
-        createAction(USER_ACTION_TYPES.FETCH_LATEST_USER_FAILURE, payload)
+export const fetchUserFailure = withMatcher(
+    (payload: Error): FetchUserFailure =>
+        createAction(USER_ACTION_TYPES.FETCH_USER_FAILURE, payload)
 )

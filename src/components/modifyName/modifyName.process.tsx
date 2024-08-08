@@ -2,7 +2,7 @@ import { useEffect, useCallback, MouseEventHandler, ComponentType, ChangeEventHa
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 
-import { fetchLatestUserStart } from '../../store/user/user.actions';
+import { fetchUserStart } from '../../store/user/user.actions';
 import { getUserSelector } from '../../store/user/user.seletor';
 import { UserIncidental } from '../../store/user/user.types';
 
@@ -66,7 +66,7 @@ export const withProcess = (Component: ComponentType<ModifyNameProps>) =>
                     throw result;
                 }
 
-                dispatch(fetchLatestUserStart());
+                dispatch(fetchUserStart());
                 hintMerge("更新完毕，请重进页面");
                 navigate("/");
                 return null;

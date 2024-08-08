@@ -2,7 +2,7 @@ import React, { ChangeEventHandler, ComponentType, DragEventHandler, FormEventHa
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchLatestUserStart } from '../../store/user/user.actions';
+import { fetchUserStart } from '../../store/user/user.actions';
 import { getUserSelector } from '../../store/user/user.seletor';
 
 import { updateProfileAsync } from '../../utils/processData/user.utils';
@@ -334,7 +334,7 @@ export const withProcess = (Component: ComponentType<ModifyProfileProps>) =>
                     throw result;
                 }
 
-                dispatch(fetchLatestUserStart());
+                dispatch(fetchUserStart());
                 hintMerge("更新完毕，请重进页面");
                 navigate("/");
                 return null;

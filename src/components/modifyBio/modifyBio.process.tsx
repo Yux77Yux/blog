@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getUserSelector } from '../../store/user/user.seletor';
 import { UserIncidental } from '../../store/user/user.types';
-import { fetchLatestUserStart } from '../../store/user/user.actions';
+import { fetchUserStart } from '../../store/user/user.actions';
 
 import { hintMerge } from '../../utils/hint';
 import { updateBioAsync } from '../../utils/processData/user.utils';
@@ -66,7 +66,7 @@ export const withProcess = (Component: ComponentType<ModifyBioProps>) =>
                     throw result;
                 }
 
-                dispatch(fetchLatestUserStart());
+                dispatch(fetchUserStart());
                 hintMerge("更新完毕，请重进页面");
                 navigate("/");
                 return null;

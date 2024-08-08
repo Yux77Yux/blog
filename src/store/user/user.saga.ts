@@ -3,7 +3,6 @@ import { takeLatest, all, call, put, select } from 'typed-redux-saga/macro';
 import {
     USER_ACTION_TYPES,
     UserIncidental,
-    UsernameAndPassword
 } from "./user.types";
 import {
     SignInWithEmailStart,
@@ -14,8 +13,8 @@ import {
     signUpWithEmailFailure,
     signOutSuccess,
     signOutFailure,
-    fetchLatestUserSuccess,
-    fetchLatestUserFailure,
+    fetchUserSuccess,
+    fetchUserFailure,
 } from './user.actions';
 import { getUserSelector } from './user.seletor';
 
@@ -23,7 +22,7 @@ import {
     userSignInAsync,
     userSignUpAsync,
     userSignOutAsync,
-    fetchLatestUserAsync,
+    fetchUserAsync,
 } from '../../utils/processData/user.utils';
 
 export function* signInAsync({ payload }: SignInWithEmailStart) {
@@ -72,19 +71,19 @@ export function* signOutAsync() {
     }
 }
 
-export function* fetchLatestUser() {
+export function* fetchUser() {
     const currentUser: UserIncidental | null = yield* select(getUserSelector);
     if (!currentUser) return;
 
     try {
-        const response: UserIncidental | Error = yield* call(fetchLatestUserAsync, currentUser.id);
+        const response: UserIncidental | Error = yield* call(fetchUserAsync, currentUser.uid);
 
         if (response instanceof Error) {
             throw response;
         }
-        yield* put(fetchLatestUserSuccess(response));
+        yield* put(fetchUserSuccess(response));
     } catch (error) {
-        yield* put(fetchLatestUserFailure(error as Error));
+        yield* put(fetchUserFailure(error as Error));
     }
 }
 
@@ -100,8 +99,8 @@ export function* onSignOutAsync() {
     yield* takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOutAsync);
 }
 
-export function* onFetchLatestUserUser() {
-    yield* takeLatest(USER_ACTION_TYPES.FETCH_LATEST_USER_START, fetchLatestUser);
+export function* onFetchUserUser() {
+    yield* takeLatest(USER_ACTION_TYPES.FETCH_USER_START, fetchUser);
 }
 
 export function* userSaga() {
@@ -109,6 +108,6 @@ export function* userSaga() {
         call(onSignInAsync),
         call(onSignUpAsync),
         call(onSignOutAsync),
-        call(onFetchLatestUserUser),
+        call(onFetchUserUser),
     ]);
 }

@@ -9,13 +9,7 @@ import './personProfileNav.styles.scss'
 const PersonProfileNav = () => {
     const currentUser = useSelector(getUserSelector);
     const [profilePath, setProfilePath] = useState<string>(require("../../assets/mingchao2.svg").default);
-    useEffect(() => {
-        if (!currentUser) {
-            setProfilePath(() => require("../../assets/mingchao3.svg").default);
-            return;
-        };
-        setProfilePath(() => currentUser.profile);
-    }, [currentUser]);
+
     const dropOptions = [
         {
             Id: 1,
@@ -28,6 +22,15 @@ const PersonProfileNav = () => {
             toURL: `/personPage/${currentUser?.uid || -1}`,
         },
     ];
+
+    useEffect(() => {
+        if (!currentUser) {
+            console.log("shuaa");
+            setProfilePath(() => require("../../assets/mingchao3.svg").default);
+            return;
+        };
+        setProfilePath(() => currentUser.profile);
+    }, [currentUser]);
 
     return (
         <div className="personProfileNavBox">

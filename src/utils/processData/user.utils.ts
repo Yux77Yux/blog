@@ -75,25 +75,8 @@ export const userSignOutAsync = async (id: number): Promise<{ success: string } 
     }
 }
 
-export const fetchUserAsync = async (uid: string): Promise<UserIncidental | null> => {
+export const fetchUserAsync = async (uid: string): Promise<UserIncidental | Error> => {
     const url = `http://localhost:3001/api/user/fetch-user?uid=${uid}`;
-
-    try {
-        const response = await fetch(url, { method: 'GET' });
-        const data: { err: string } | UserIncidental = await response.json();
-        if (!response.ok) {
-            throw new Error(`${(data as { err: string }).err}`);
-        }
-        return data as UserIncidental;
-    } catch (error) {
-        // Log the error and throw it
-        console.error('Error fetching user:', error);
-        return null;
-    }
-}
-
-export const fetchLatestUserAsync = async (id: number): Promise<UserIncidental | Error> => {
-    const url = `http://localhost:3001/api/user/fetch-latest-user?id=${id}`;
 
     try {
         const response = await fetch(url, { method: 'GET' });
