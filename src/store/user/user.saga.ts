@@ -7,6 +7,7 @@ import {
 import {
     SignInWithEmailStart,
     SignUpWithEmailStart,
+    AutoSignInStart,
     signInWithEmailSuccess,
     signInWithEmailFailure,
     signUpWithEmailSuccess,
@@ -23,6 +24,7 @@ import {
     userSignUpAsync,
     userSignOutAsync,
     fetchUserAsync,
+    autoSignInAsync,
 } from '../../utils/processData/user.utils';
 
 export function* signInAsync({ payload }: SignInWithEmailStart) {
@@ -60,7 +62,7 @@ export function* signOutAsync() {
     try {
         const response: Error | {
             success: string;
-        } = yield* call(userSignOutAsync, currentUser.id);
+        } = yield* call(userSignOutAsync, currentUser.uid);
 
         if (response instanceof Error) {
             throw response;
@@ -87,6 +89,19 @@ export function* fetchUser() {
     }
 }
 
+export function* autoSignIn({ payload }: AutoSignInStart){
+    try {
+        const response: UserIncidental | Error = yield* call(autoSignInAsync, payload);
+
+        if (response instanceof Error) {
+            throw response;
+        }
+        yield* put(fetchUserSuccess(response));
+    } catch (error) {
+        yield* put(fetchUserFailure(error as Error));
+    }
+}
+
 export function* onSignInAsync() {
     yield* takeLatest(USER_ACTION_TYPES.SIGN_IN_WITH_EMAIL_START, signInAsync);
 }
@@ -99,8 +114,12 @@ export function* onSignOutAsync() {
     yield* takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOutAsync);
 }
 
-export function* onFetchUserUser() {
+export function* onFetchUser() {
     yield* takeLatest(USER_ACTION_TYPES.FETCH_USER_START, fetchUser);
+}
+
+export function* onAutoSignIn(){
+    yield* takeLatest(USER_ACTION_TYPES.AUTO_SIGN_IN_START, autoSignIn);
 }
 
 export function* userSaga() {
@@ -108,6 +127,7 @@ export function* userSaga() {
         call(onSignInAsync),
         call(onSignUpAsync),
         call(onSignOutAsync),
-        call(onFetchUserUser),
+        call(onFetchUser),
+        call(onAutoSignIn),
     ]);
 }

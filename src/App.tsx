@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import PersonProfileNav from './components/personProfileNav/personProfileNav.component';
 import VideoBackground from './components/videoBackground/videoBackground.component';
 
+import { autoSignInStart } from './store/user/user.actions';
 import { fetchArticlesStart } from './store/articles/articles.action';
 
 import './App.scss';
@@ -12,6 +13,13 @@ import './App.scss';
 
 const App = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    dispatch(autoSignInStart(token))
+
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(fetchArticlesStart(""));

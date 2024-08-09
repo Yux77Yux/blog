@@ -8,6 +8,7 @@ export enum USER_ACTION_TYPES {
     FETCH_USER_START = "user/FETCH_USER_START",
     FETCH_USER_SUCCESS = "user/FETCH_USER_SUCCESS",
     FETCH_USER_FAILURE = "user/FETCH_USER_FAILURE",
+    AUTO_SIGN_IN_START = "user/AUTO_SIGN_IN_START",
 
     SIGN_OUT_START = "/user/SIGN_OUT_START",
     SIGN_OUT_SUCCESS = "/user/SIGN_OUT_SUCCESS",
@@ -19,7 +20,6 @@ export interface UsernameAndPassword {
 }
 
 export interface UserIncidental {
-    id: number, //外键，与User.id联系,不要返回这个数据
     uid: string, //主键，主要用于被搜索，生成后不可更改
     name: string, //昵称，也可用于被搜索，允许可以更改
     profile: string, //头像图片地址

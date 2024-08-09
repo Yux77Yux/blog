@@ -324,8 +324,8 @@ export const withProcess = (Component: ComponentType<ModifyProfileProps>) =>
                 const profile = file;
                 if (!profile) return;
 
-                const upload: { id: number, profile: File } = {
-                    id: activeUser!.id,
+                const upload: { uid: string, profile: File } = {
+                    uid: activeUser!.uid,
                     profile: profile
                 }
 

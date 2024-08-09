@@ -27,6 +27,8 @@ export type FetchUserStart = Action<USER_ACTION_TYPES.FETCH_USER_START>;
 export type FetchUserSuccess = ActionWithPayload<USER_ACTION_TYPES.FETCH_USER_SUCCESS, UserIncidental>;
 export type FetchUserFailure = ActionWithPayload<USER_ACTION_TYPES.FETCH_USER_FAILURE, Error>;
 
+export type AutoSignInStart = ActionWithPayload<USER_ACTION_TYPES.AUTO_SIGN_IN_START,string>;
+
 //Sign-In
 export const signInWithEmailStart = (payload: UsernameAndPassword): SignInWithEmailStart =>
     createAction(USER_ACTION_TYPES.SIGN_IN_WITH_EMAIL_START, payload)
@@ -69,7 +71,7 @@ export const signOutFailure = withMatcher(
         createAction(USER_ACTION_TYPES.SIGN_OUT_SUCCESS, payload)
 )
 
-//Update-User
+//fetch-User
 export const fetchUserStart = (): FetchUserStart =>
     createAction(USER_ACTION_TYPES.FETCH_USER_START, null)
 
@@ -82,3 +84,7 @@ export const fetchUserFailure = withMatcher(
     (payload: Error): FetchUserFailure =>
         createAction(USER_ACTION_TYPES.FETCH_USER_FAILURE, payload)
 )
+
+//autoSignIn
+export const autoSignInStart = (payload:string): AutoSignInStart =>
+    createAction(USER_ACTION_TYPES.AUTO_SIGN_IN_START, payload)

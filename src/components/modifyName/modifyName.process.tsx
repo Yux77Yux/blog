@@ -57,8 +57,8 @@ export const withProcess = (Component: ComponentType<ModifyNameProps>) =>
             try {
                 const formData = new FormData(event.currentTarget);
                 const name = formData.get("name") as string;
-                const upload: { id: number, name: string } = {
-                    id: activeUser!.id,
+                const upload: { uid: string, name: string } = {
+                    uid: activeUser!.uid,
                     name: name,
                 }
                 const result = updateNameAsync(upload);
@@ -73,7 +73,7 @@ export const withProcess = (Component: ComponentType<ModifyNameProps>) =>
             } catch (error) {
                 hintMerge((error as Error).message);
             }
-        }, []);
+        }, [dispatch,activeUser,navigate]);
 
         const handlers = {
             closeHandler: closeHandler,

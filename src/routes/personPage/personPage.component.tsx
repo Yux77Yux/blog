@@ -33,7 +33,7 @@ const PersonInfo = () => {
     const navigate = useNavigate();
     const activeUser = useSelector(getUserSelector);
     const currentUser = data as UserIncidental;
-    const isActiveUser = currentUser?.id === activeUser?.id || false;
+    const isActiveUser = currentUser?.uid === activeUser?.uid || false;
     const profile = currentUser?.profile || require('../../assets/mingchao2.svg').default;
 
     const hiddleHandler = useCallback(() => {
@@ -55,12 +55,12 @@ const PersonInfo = () => {
     }, []);
 
     const clickBioHandler = useCallback(() => {
-        if (!activeUser || activeUser?.id !== currentUser.id) {
+        if (!activeUser || activeUser?.uid !== currentUser.uid) {
             return;
         } else {
             navigate("modifyBio");
         }
-    }, [activeUser, currentUser.id, navigate]);
+    }, [activeUser, currentUser.uid, navigate]);
 
     if (data instanceof Error) {
         return <div>Error: {data.message}</div>;

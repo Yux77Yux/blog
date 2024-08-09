@@ -1,6 +1,9 @@
 import { UserIncidental, UsernameAndPassword } from '../../store/user/user.types';
 
-type ResponseType = UserIncidental | { err: string };
+type ResponseType = {
+    userInfo: UserIncidental,
+    token: string
+} | { err: string };
 
 export const userSignInAsync = async (passport: UsernameAndPassword): Promise<UserIncidental | Error> => {
     const url = "http://localhost:3001/api/user/sign-in";
@@ -19,7 +22,17 @@ export const userSignInAsync = async (passport: UsernameAndPassword): Promise<Us
             throw new Error((result as { err: string }).err);
         }
 
-        return result as UserIncidental;
+        localStorage.setItem('token', (result as {
+            userInfo: UserIncidental,
+            token: string
+        }).token);
+
+        const user = (result as {
+            userInfo: UserIncidental,
+            token: string
+        }).userInfo;
+
+        return user;
     } catch (error) {
         return error as Error;
     }
@@ -51,16 +64,21 @@ export const userSignUpAsync = async (passport: UsernameAndPassword): Promise<nu
     }
 }
 
-export const userSignOutAsync = async (id: number): Promise<{ success: string } | Error> => {
+export const userSignOutAsync = async (uid: string): Promise<{ success: string } | Error> => {
     const url = "http://localhost:3001/api/user/sign-out";
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error("token is empty!");
+    }
 
     try {
         const response: Response = await fetch(url, {
             method: "POST",
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': token,
             },
-            body: `id=${encodeURIComponent(id)}`
+            body: `uid=${encodeURIComponent(uid)}`
         });
 
         const result: { success: string } | { err: string } = await response.json();
@@ -69,6 +87,7 @@ export const userSignOutAsync = async (id: number): Promise<{ success: string } 
             throw new Error((result as { err: string }).err);
         }
 
+        localStorage.removeItem("token");
         return result as { success: string };
     } catch (error) {
         return error as Error;
@@ -90,11 +109,11 @@ export const fetchUserAsync = async (uid: string): Promise<UserIncidental | Erro
     }
 }
 
-export const updateProfileAsync = async (upload: { id: number, profile: File }): Promise<string | Error> => {
+export const updateProfileAsync = async (upload: { uid: string, profile: File }): Promise<string | Error> => {
     const url = "http://localhost:3001/api/user/update-profile";
 
     const formData = new FormData();
-    formData.append('id', upload.id.toString());
+    formData.append('uid', upload.uid.toString());
     formData.append('profile', upload.profile);
 
     try {
@@ -106,13 +125,13 @@ export const updateProfileAsync = async (upload: { id: number, profile: File }):
         if (!response.ok || result instanceof Error) {
             throw new Error(`${(result as { err: string }).err}`);
         }
-        return (result as { success: string; }).success ;
+        return (result as { success: string; }).success;
     } catch (error) {
         return error as Error;
     }
 }
 
-export const updateNameAsync = async (upload: { id: number, name: string }): Promise<string | Error> => {
+export const updateNameAsync = async (upload: { uid: string, name: string }): Promise<string | Error> => {
     const url = "http://localhost:3001/api/user/update-name";
 
     try {
@@ -127,13 +146,13 @@ export const updateNameAsync = async (upload: { id: number, name: string }): Pro
         if (!response.ok || result instanceof Error) {
             throw new Error(`${(result as { err: string }).err}`);
         }
-        return (result as { success: string; }).success ;
+        return (result as { success: string; }).success;
     } catch (error) {
         return error as Error;
     }
 }
 
-export const updateBioAsync = async (upload: { id: number, bio: string }): Promise<string | Error> => {
+export const updateBioAsync = async (upload: { uid: string, bio: string }): Promise<string | Error> => {
     const url = "http://localhost:3001/api/user/update-bio";
 
     try {
@@ -148,7 +167,28 @@ export const updateBioAsync = async (upload: { id: number, bio: string }): Promi
         if (!response.ok || result instanceof Error) {
             throw new Error(`${(result as { err: string }).err}`);
         }
-        return (result as { success: string; }).success ;
+        return (result as { success: string; }).success;
+    } catch (error) {
+        return error as Error;
+    }
+}
+
+export const autoSignInAsync = async (token: string): Promise<UserIncidental | Error> => {
+    const url = "http://localhost:3001/api/user/token-sign-in";
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': token,
+            },
+        });
+        const data: { err: string } | UserIncidental = await response.json();
+        if (!response.ok) {
+            throw new Error(`${(data as { err: string }).err}`);
+        }
+        return data as UserIncidental;
     } catch (error) {
         return error as Error;
     }

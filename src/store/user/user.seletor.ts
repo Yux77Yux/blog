@@ -10,11 +10,6 @@ export const getUserSelector = createSelector(
     (reducerState: UserState) => reducerState.userActive
 )
 
-export const getTimeSelector = createSelector(
-    [selectUserReducer],
-    (reducerState: UserState) => reducerState.latestTime
-)
-
 export const getHintSelector = createSelector(
     [selectUserReducer],
     (reducerState: UserState) => reducerState.hint

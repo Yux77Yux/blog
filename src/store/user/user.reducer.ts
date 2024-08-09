@@ -10,18 +10,17 @@ import {
     fetchUserFailure,
 } from './user.actions';
 import { UserIncidental } from './user.types';
+import { hintMerge } from '../../utils/hint';
 
 export interface UserState {
     readonly hint: string,
     readonly userActive: UserIncidental | null,
-    readonly latestTime: Date | null,
     readonly error: Error | null,
 }
 
 const USER_INITIAL_STATUS: UserState = {
     hint: "",
     userActive: null,
-    latestTime: null,
     error: null,
 }
 
@@ -31,15 +30,16 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
             ...state,
             hint: "",
             userActive: action.payload,
-            latestTime: new Date(),
             error: null,
         }
     }
 
     if (signUpWithEmailSuccess.match(action)) {
+        hintMerge("注册成功！")
+
         return {
             ...state,
-            hint: "注册成功",
+            hint: "",
             error: null,
         }
     }
@@ -49,7 +49,6 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
             ...state,
             hint: "",
             userActive: null,
-            latestTime: null,
             error: null,
         }
     }
@@ -59,7 +58,6 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
             ...state,
             hint: "",
             userActive: action.payload,
-            latestTime: new Date(),
             error: null,
         }
     }
@@ -69,7 +67,6 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
             ...state,
             hint: action.payload.message,
             userActive: null,
-            latestTime: null,
             error: action.payload,
         }
     }
@@ -82,6 +79,8 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
     }
 
     if (signOutFailure.match(action)) {
+        hintMerge(action.payload);
+
         return {
             ...state,
             hint: "",
@@ -93,7 +92,6 @@ export const userReducer = (state = USER_INITIAL_STATUS, action = {} as AnyActio
             ...state,
             hint: action.payload.message,
             userActive: null,
-            latestTime: null,
             error: action.payload,
         }
     }

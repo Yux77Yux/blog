@@ -57,8 +57,8 @@ export const withProcess = (Component: ComponentType<ModifyBioProps>) =>
             try {
                 const formData = new FormData(event.currentTarget);
                 const bio = formData.get("bio") as string;
-                const upload: { id: number, bio: string } = {
-                    id: activeUser!.id,
+                const upload: { uid: string, bio: string } = {
+                    uid: activeUser!.uid,
                     bio: bio,
                 }
                 const result = updateBioAsync(upload);
@@ -73,7 +73,7 @@ export const withProcess = (Component: ComponentType<ModifyBioProps>) =>
             } catch (error) {
                 hintMerge((error as Error).message);
             }
-        }, []);
+        }, [dispatch,activeUser,navigate]);
 
         const handlers = {
             closeHandler: closeHandler,

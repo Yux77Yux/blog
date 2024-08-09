@@ -25,7 +25,6 @@ const PersonProfileNav = () => {
 
     useEffect(() => {
         if (!currentUser) {
-            console.log("shuaa");
             setProfilePath(() => require("../../assets/mingchao3.svg").default);
             return;
         };
