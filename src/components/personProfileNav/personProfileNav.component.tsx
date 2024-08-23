@@ -50,9 +50,14 @@ const PersonProfileNav = () => {
                         )
                     }
                     {
-                        currentUser ? <Link to="/authentication/sign-out" className="dropOption">
-                            <span className="text">退出</span>
-                        </Link>
+                        currentUser ? <>
+                            <Link to="/creations" className="dropOption">
+                                <span className="text">发布</span>
+                            </Link>
+                            <Link to="/authentication/sign-out" className="dropOption">
+                                <span className="text">退出</span>
+                            </Link>
+                        </>
                             : <>
                                 <Link to="/authentication/sign-in" className="dropOption">
                                     <span className="text">登录</span>

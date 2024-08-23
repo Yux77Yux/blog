@@ -12,7 +12,7 @@ import {
 import { Articles } from '../../store/articles/articles.types';
 
 
-export interface PushProps extends ArticleCardFlowsProps {
+export interface SearchProps extends ArticleCardFlowsProps {
     load: boolean,
     articleCardFlows: Articles,
     pageNum: number,
@@ -20,7 +20,7 @@ export interface PushProps extends ArticleCardFlowsProps {
     articlesLength: number,
 }
 
-export function withProcess(Component: ComponentType<PushProps>) {
+export function withProcess(Component: ComponentType<SearchProps>) {
     return () => {
         const articles = useSelector(getArticlesSelector);
         const isLoading = useSelector(articlesIsLoading);

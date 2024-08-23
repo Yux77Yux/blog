@@ -14,11 +14,16 @@ const Navigation = () => {
     const navOptions: NavOptionType[] = [
         {
             Id: 1,
-            title: "/push",
-            titleName: "推送",
+            title: "/",
+            titleName: "主页",
         },
         {
             Id: 2,
+            title: "/search",
+            titleName: "搜索",
+        },
+        {
+            Id: 3,
             title: "/favorites",
             titleName: "收藏",
         },

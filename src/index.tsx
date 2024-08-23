@@ -16,10 +16,11 @@ import './index.scss';
 const App = lazy(() => import('./App'));
 const Navigation = lazy(() => import('./routes/navigation/navigation.component'));
 const Authentication = lazy(() => import('./routes/authentication/authentication.component'));
-const Push = lazy(() => import('./routes/push/push.component'));
-const ArticleDetail = lazy(() => import('./components/articleDetail/articleDetail.component'));
+const Search = lazy(() => import('./routes/searchPage/search.component'));
+const Creations = lazy(() => import('./routes/creations/creations.component'));
 const PersonPage = lazy(() => import('./routes/personPage/personPage.component'));
 const Favorites = lazy(() => import('./routes/favorites/favorites.component'));
+const ArticleDetail = lazy(() => import('./components/articleDetail/articleDetail.component'));
 const ModifyProfile = lazy(() => import('./components/modifyProfile/modifyProfile.component'));
 const ModifyBio = lazy(() => import('./components/modifyBio/modifyBio.component'));
 const ModifyName = lazy(() => import('./components/modifyName/modifyName.component'));
@@ -36,8 +37,8 @@ const router = createBrowserRouter([
         element: <Navigation />,
         children: [
           {
-            path: "push",
-            element: <Push />,
+            path: "search",
+            element: <Search />,
           },
           {
             path: "authentication/:sign",
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
           {
             path: "favorites",
             element: <Favorites />,
-          }
+          },
+          {
+            path: "creations",
+            element: <Creations />,
+          },
         ]
       },
       {

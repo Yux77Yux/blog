@@ -24,7 +24,7 @@ export const withProcessNav = (Component: ComponentType<ArticlesDetailProps>) =>
     const [loading, setLoading] = useState(true);
 
     const backHandler = useCallback((event: React.MouseEvent) => {
-        navigate("/push");
+        navigate(-1);
     }, [navigate]);
 
     const pageDefaultHandler = useCallback((event: React.MouseEvent) => {
@@ -52,7 +52,7 @@ export const withProcessNav = (Component: ComponentType<ArticlesDetailProps>) =>
 
     useEffect(() => {
         if (!articles) {
-            navigate("/push");
+            navigate("/");
             return;
         }
         
@@ -60,7 +60,7 @@ export const withProcessNav = (Component: ComponentType<ArticlesDetailProps>) =>
         const foundArticle = searchArticle(uuid);
 
         if (!foundArticle) {
-            navigate("/push");
+            navigate("/search");
             return;
         } else {
             setArticleDetail(foundArticle);
