@@ -1,0 +1,120 @@
+.creation-control-group {
+    display: block;
+    position: relative;
+    margin-left: 50px;
+    height: auto;
+    width: auto;
+
+    & .button-group {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+
+        & button {
+            display: block;
+            position: relative;
+            margin: 5px;
+            padding: 3px;
+            outline: none;
+            background-color: rgba($color: #9db89f, $alpha: 0.7);
+            border: 0;
+            border-radius: 4px;
+            height: 27.5px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+            min-width: 32px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+
+        & .h-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 25;
+            height: auto;
+            width: auto;
+            flex-direction: row;
+
+            & button {
+                margin: 1px;
+            }
+
+            &:hover,
+            &:focus {
+                display: flex;
+            }
+        }
+
+        & .show-h-list:focus+.h-list {
+            display: flex;
+        }
+
+        & .colorPickers {
+            display: none;
+            position: absolute;
+            top: 100%;
+            z-index: 5;
+            height: auto;
+            width: auto;
+            padding: 2px;
+            background-color: antiquewhite;
+            flex-direction: row;
+
+            & input[type="color"] {
+                display: block;
+                position: relative;
+                margin: 0;
+                border: 0;
+                outline: 0;
+                width: 30px;
+                height: 30px;
+            }
+
+            & .text-color-default {
+                margin: 0;
+                border: 0;
+                border-radius: 5px;
+                background: rgb(238, 238, 238);
+                color: rgb(0, 0, 0);
+                width: 40px;
+                height: 30px;
+                font-size: 14px;
+            }
+
+            &:focus,
+            &:valid,
+            &:hover {
+                display: flex;
+            }
+        }
+
+        & .showColorPicker:focus+.colorPickers {
+            display: flex;
+        }
+    }
+}
+
+.creation-content {
+    & .ProseMirror {
+        display: block;
+        position: relative;
+        margin: 5px auto;
+        width: 94%;
+        min-height: 200px;
+        border: 2px solid rgb(12, 12, 12);
+        border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 50;
+        font-size: 18px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

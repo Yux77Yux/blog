@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "启动Chrome并调试",
+            "url": "http://localhost:3000",  // React开发服务器的URL
+            "webRoot": "${workspaceFolder}/src",  // 指向源码的目录
+            "sourceMaps": true,  // 使用source maps
+            "skipFiles": ["<node_internals>/**"]  // 跳过Node.js内部模块
+        }
+    ]
+}
