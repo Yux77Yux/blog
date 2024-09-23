@@ -4,8 +4,10 @@
     padding-top: 10px;
     margin: 10px auto;
     width: 90vw;
-    height: auto;
-    background-color: rgba($color: #d3d1d1, $alpha: 0.9);
+    max-height: 90vh;
+    overflow: auto;
+    scrollbar-width: none;
+    background-color: #3a3a3a;
 
     & .creation-title {
         display: block;
@@ -16,7 +18,7 @@
         width: 94%;
         height: 50px;
         font-size: 30px;
-        color: black;
+        color: rgb(192, 192, 192);
         background-color: transparent;
 
         &:focus,

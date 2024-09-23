@@ -1,7 +1,7 @@
 .creation-control-group {
     display: block;
     position: relative;
-    margin-left: 50px;
+    margin: 10px 10px 10px 50px;
     height: auto;
     width: auto;
 
@@ -13,49 +13,23 @@
         & button {
             display: block;
             position: relative;
-            margin: 5px;
+            margin: 0 5px;
             padding: 3px;
             outline: none;
             background-color: rgba($color: #9db89f, $alpha: 0.7);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 20px;
             border: 0;
-            border-radius: 4px;
-            height: 27.5px;
+            border-radius: 6px;
+            height: 30px;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 20px;
             min-width: 32px;
             cursor: pointer;
-
-            &:hover {
-                background-color: black;
-                color: white;
-            }
         }
 
-        & .h-list {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            z-index: 25;
-            height: auto;
-            width: auto;
-            flex-direction: row;
-
-            & button {
-                margin: 1px;
-            }
-
-            &:hover,
-            &:focus {
-                display: flex;
-            }
-        }
-
-        & .show-h-list:focus+.h-list {
-            display: flex;
-        }
-
-        & .colorPickers {
+        & .text-color-pickers {
             display: none;
             position: absolute;
             top: 100%;
@@ -94,8 +68,167 @@
             }
         }
 
-        & .showColorPicker:focus+.colorPickers {
+        & .show-text-color-picker:hover+.text-color-pickers {
             display: flex;
+        }
+
+        & .h-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 25;
+            background-color: white;
+            height: auto;
+            width: auto;
+            padding: 4px 0;
+            flex-direction: row;
+
+            & button {
+                margin: 0 6px;
+            }
+
+            &:hover,
+            &:focus,
+            &:valid {
+                display: flex;
+            }
+        }
+
+        & .show-h-list:hover+.h-list {
+            display: flex;
+        }
+
+        & .highlight-color-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            padding: 4px 0;
+            z-index: 5;
+            background-color: rgb(255, 255, 255);
+            flex-direction: row;
+
+            & input[type="color"] {
+                display: block;
+                position: relative;
+                margin-top: 5px;
+                border: 0;
+                outline: 0;
+                width: 20px;
+                height: 20px;
+            }
+
+            &:hover,
+            &:focus,
+            &:valid {
+                display: flex;
+            }
+        }
+
+        & .show-highlight-List {
+            margin-right: 30px;
+
+            &:hover+.highlight-color-list {
+                display: flex;
+            }
+        }
+
+        & .table-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            z-index: 5;
+            background-color: white;
+            flex-direction: row;
+
+            & li {
+                padding: 5px 0;
+            }
+
+            &:hover,
+            &:focus,
+            &:valid {
+                display: flex;
+            }
+
+            & .table-add-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                padding: 4px 0;
+                z-index: 5;
+                background-color: white;
+                flex-direction: row;
+
+                &:hover,
+                &:focus,
+                &:valid {
+                    display: flex;
+                }
+            }
+
+            & .table-delete-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                padding: 4px 0;
+                z-index: 5;
+                background-color: white;
+                flex-direction: row;
+
+                &:hover,
+                &:focus,
+                &:valid {
+                    display: flex;
+                }
+            }
+
+            & .table-span-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                padding: 4px 0;
+                z-index: 5;
+                background-color: white;
+                flex-direction: row;
+
+                &:hover,
+                &:focus,
+                &:valid {
+                    display: flex;
+                }
+            }
+
+            & .table-toggle-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                padding: 4px 0;
+                z-index: 5;
+                background-color: white;
+                flex-direction: row;
+
+                &:hover,
+                &:focus,
+                &:valid {
+                    display: flex;
+                }
+            }
+
+            & .show-table-add-list:hover .table-add-list,
+            & .show-table-delete-list:hover .table-delete-list,
+            & .show-table-span-list:hover .table-span-list,
+            & .show-table-toggle-list:hover .table-toggle-list {
+                display: flex;
+            }
+        }
+
+        & .show-table-list {
+            margin-right: 30px;
+
+            &:hover+.table-list {
+                display: flex;
+            }
         }
     }
 }
@@ -107,14 +240,60 @@
         margin: 5px auto;
         width: 94%;
         min-height: 200px;
+        overflow: auto;
+        scrollbar-width: none;
         border: 2px solid rgb(12, 12, 12);
         border-radius: 5px;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 50;
-        font-size: 18px;
+        font-size: 20px;
+        color: rgb(192, 192, 192);
 
-        &:focus {
+        & .is-empty::before {
+            color: rgba(241, 174, 174, 0.5) !important;
+            content: attr(data-placeholder);
+            pointer-events: none;
+        }
+
+        &:focus,
+        &:valid,
+        &:hover {
             outline: none;
+        }
+
+        & pre,
+        & code {
+            background-color: #020101;
+            /* 浅灰色背景 */
+        }
+
+        & table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        /* 设置单元格的边框和内边距 */
+        & th,
+        & td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* 设置表头背景色 */
+        & th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        /* 设置奇数行和偶数行的不同背景色 */
+        & tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        & tbody tr:nth-child(even) {
+            background-color: #fff;
         }
     }
 }
